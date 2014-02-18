@@ -1,10 +1,12 @@
-(ns clog.template
+(ns clog.template.util
   (:require [hiccup-bridge.core :as hc]
-            [clojure.walk :as walk]
-            [clj-time.core :as time])
+            [clj-time.core :as time]
+            [hiccup.page :as page])
   (:use clj-time.format
         clj-time.coerce
-        markdown.core))
+        markdown.core
+        clog.config))
+
 
 (defn simple-recur-path [tr ks]
     (cond
@@ -35,28 +37,10 @@
                            (fn [x] (k update-value)) ))
               template positions))) )
 
-(def container-template (build-template (hc/html-file->hiccup "src/clog/templates/container.html")))
-
-(hc/html-file->hiccup "src/clog/templates/post-example.html")
-
 (defn format-time [time-long]
   (let [time-format (formatter "MMM dd,yyyy hh:mm")]
-  (unparse time-format (from-long time-long))))
+    (unparse time-format (from-long time-long))))
 
-(defn post-view [post & username]
-  [:div.post
-   [:div {:id (str "post" (:id post)) :class "postwrap"}
-    [:h2.posttitle.font-hei (:title post)]
-    [:p.postmeta (str "Posted on "
-                      (format-time (:time post))
-                      " | By "
-                      (:as (:author post))
-                      " | Tags "
-                      (clojure.string/join " " (:tags post))
-                      " ")]
-    (if (not (nil? username)) [:a {:href (str "/posts/" (:id post) "/edit")} "Edit"])
-    [:div.postcontent.font-hei (md-to-html-string (:content post))]]])
-
-;;[:ul (map (fn [t] [:li t]) (:tags post))]
-
-(post-view {:id 109 :title "aaa" :time (to-long (time/now)) :author {:username "arthur" :as "saber"} :tags ["minecraft"]})
+(defn wrap-ul [& items]
+  [:ul
+   (map (fn [x] [:li x]) items)])

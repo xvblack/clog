@@ -12,7 +12,10 @@
                  [digest "1.4.3"]
                  [sandbar "0.4.0-SNAPSHOT"]
                  [markdown-clj "0.9.41"]
-                 [hiccup-bridge "1.0.0-SNAPSHOT"]]
+                 [hiccup-bridge "1.0.0-SNAPSHOT"]
+                 [om "0.3.6"]
+                 [sablono "0.2.6"]
+                 [org.clojure/data.json "0.2.4"]]
   :plugins [[lein-ring "0.8.10"]
             [lein-cljsbuild "1.0.2"]]
   :ring {:handler clog.handler/app}

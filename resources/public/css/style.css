@@ -1,0 +1,402 @@
+/* css reset */
+html{color:#000;background:transparent;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}li{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{*font-size:100%}legend{color:#000}
+
+body{
+	background-color: #F2F2F2;
+	position: relative;
+}
+#wrapper{
+	display: inline-block;
+	width:60%;
+	max-width: 1200px;
+	margin:0 auto;
+	padding:0px 8% 0px 8%;
+}
+#header{
+	padding:20px 0 10px 0;
+	vertical-align: bottom;
+}
+#tool{
+	float:right;
+	margin-top: 0px;
+}
+#contents{
+	margin-top: 10px;
+	border-top:1px dashed #CCC;
+}
+.post{
+	background-color:#FCFCFC;
+	border: 1px solid #DDD;
+	margin-top:30px;
+	padding:24px;
+}
+.posttitle{
+	color:#333;
+	font-family: "Open Sans";
+	font-weight: 400;
+	font-size:26px;
+	text-shadow: 1px 0 1px #d9d9d9;
+}
+.postmeta{
+	color:#777;
+	font-family: "Open Sans";
+	font-style: italic;
+	font-size: 12px;
+	margin-top:4px;
+	border-bottom: 1px
+}
+.postcontent{
+	margin-top: 10px;
+	color:#454545;
+	font-size: 15px;
+}
+#logo{
+	background-image: url('/img/logo.png');
+	display: inline-block;
+	width:257px;
+	height:78px;
+}
+
+#onlyButton{
+	float:right;
+	display: none;
+	font-size: 18px;
+	font-family: "Open Sans";
+	margin-top: 39px;
+}
+
+#footer{
+	margin-top:20px;
+	border-top:1px solid #CCC;
+}
+#footer p{
+	margin-top:6px;
+	color:#777;
+	font-family: "Open Sans";
+	font-size:13px;
+	font-style: italic;
+	text-align: center;
+}
+
+#sidebar{
+	display: inline-block;
+	width: 20%;
+	background: #1C171E;
+	height: 100%;
+	position: fixed;
+	right: 0;
+	overflow-y: auto;
+	padding:30px 2% 0 2%;
+}
+
+
+#sidebar h3{
+	color:#EEE;
+	font-size:20px;
+}
+#sidebar p, #sidebar a
+{
+	font-size:16px;
+	color:#eee;
+
+}
+
+/* markdown.css */
+
+.postcontent h1{
+	font-size:24px;
+	font-weight: 400;
+	color:#333;
+	font-family: "Open Sans";
+	margin-top: 12px;
+	margin-bottom:12px;
+}
+.postcontent h2{
+	font-size:22px;
+	font-weight: 400;
+	color:#333;
+	margin-top: 12px;
+	margin-bottom:12px;
+}
+.postcontent h3{
+	font-size:20px;
+	font-weight: 400;
+	color:#333;
+	margin-top: 12px;
+	margin-bottom:12px;
+}
+.postcontent h4{
+	font-size:18px;
+	font-weight: 400;
+	color:#333;
+	margin-top: 12px;
+	margin-bottom:12px;
+}
+
+.postcontent a{
+	color:#78b437;
+	text-decoration: none;
+}
+.postcontent a:hover{
+	border-bottom: 1px dashed #78b437;
+}
+
+.postcontent p{
+	line-height: 1.5em;
+	font-size: 15px;
+	font-family: "Open Sans";
+	margin-bottom: 8px;
+}
+
+.postcontent em{
+	font-style: italic;
+	font-weight: 100;
+	color:#565656;
+}
+
+.postcontent ol{
+	margin-left: 24px;
+	margin-bottom: 12px;
+}
+.postcontent ul{
+	margin-left: 24px;
+	margin-bottom: 12px;
+}
+.postcontent ol li{
+	list-style: decimal;
+	font-size: 15px;
+	line-height: 1.6em;
+}
+.postcontent ul li{
+	list-style: disc;
+	font-size: 15px;
+	line-height: 1.6em;
+}
+
+.postcontent pre{
+	max-width: 100%;
+	overflow-x:scroll;
+	font-size: 13px;
+}
+.postcontent code{
+	max-width: 100%;
+	overflow-x:scroll;
+	font-size: 13px;
+}
+
+.postcontent blockquote{
+	margin-left:2em;
+	font-size:15px;
+	border-left: 3px solid #78b437;
+	padding-left: 1em;
+	margin-bottom: 12px;
+}
+
+.postcontent hr{
+	border: 0px solid #bbb;
+	border-bottom: 1px dashed #bbb;
+	width: 80%;
+	margin: 15px auto;
+}
+
+.postcontent img{
+	display: block;
+	max-width: 100%;
+	margin:0 auto;
+	border:1px solid #ccc;
+	-webkit-box-shadow:0 0 2px 1px #78b437;
+	box-shadow:0 0 2px 1px #78b437;
+	margin:12px auto;
+}
+
+/* gradient style buttons */
+/* forked from: http://youhack.me/demo/google%20plus%20css3%20button%20style/index.html */
+
+/*------------------------------------*\
+	$WRAPPER
+\*------------------------------------*/
+.buttons {/* Style as you wish (toolbar) */
+}
+/* The Magnificent CLEARFIX */
+.buttons:before, .buttons:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.buttons:after {
+	clear: both;
+}
+.buttons {
+	zoom: 1;
+}
+/* ------------------------ */
+
+
+/*------------------------------------*\
+	$BUTTON
+\*------------------------------------*/
+button {
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fff;
+	font: bold 11px Helvetica, Arial, sans-serif;
+	color: #444;
+	line-height: 17px;
+	height: 18px;
+	display: inline-block;
+	float: left;
+	margin: 5px;
+	padding: 5px 0px 4px 0px;
+	background: #F3F3F3;
+	border: solid 1px #D9D9D9;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+ -webkit-transition: border-color .20s;
+ -moz-transition: border-color .20s;
+ -o-transition: border-color .20s;
+ transition: border-color .20s;
+	height: 29px !important;
+	cursor: pointer;
+}
+button:hover {
+	background: #F4F4F4;
+	border-color: #C0C0C0;
+	color: #333;
+}
+button:active {
+	border-color: #4D90FE;
+	color: #4D90FE;
+	-moz-box-shadow:inset 0 0 10px #D4D4D4;
+	-webkit-box-shadow:inset 0 0 10px #D4D4D4;
+	box-shadow:inset 0 0 10px #D4D4D4;
+}
+button.bluebtn {
+	border: 1px solid #3079ED !important;
+	background: #4B8DF8;
+	background: -webkit-linear-gradient(top, #4C8FFD, #4787ED);
+	background: -moz-linear-gradient(top, #4C8FFD, #4787ED);
+	background: -ms-linear-gradient(top, #4C8FFD, #4787ED);
+	background: -o-linear-gradient(top, #4C8FFD, #4787ED);
+ -webkit-transition: border .20s;
+ -moz-transition: border .20s;
+ -o-transition: border .20s;
+ transition: border .20s;
+}
+button.bluebtn:hover {
+	border: 1px solid #2F5BB7 !important;
+	background: #3F83F1;
+	background: -webkit-linear-gradient(top, #4D90FE, #357AE8);
+	background: -moz-linear-gradient(top, #4D90FE, #357AE8);
+	background: -ms-linear-gradient(top, #4D90FE, #357AE8);
+	background: -o-linear-gradient(top, #4D90FE, #357AE8);
+}
+button.greenbtn {
+	border: 1px solid #29691D !important;
+	background: #3A8E00;
+	background: -webkit-linear-gradient(top, #3C9300, #398A00);
+	background: -moz-linear-gradient(top, #3C9300, #398A00);
+	background: -ms-linear-gradient(top, #3C9300, #398A00);
+	background: -o-linear-gradient(top, #3C9300, #398A00);
+ -webkit-transition: border .20s;
+ -moz-transition: border .20s;
+ -o-transition: border .20s;
+ transition: border .20s;
+}
+button.greenbtn:hover {
+	border: 1px solid #2D6200 !important;
+	background: #3F83F1;
+	background: -webkit-linear-gradient(top, #3C9300, #368200);
+	background: -moz-linear-gradient(top, #3C9300, #368200);
+	background: -ms-linear-gradient(top, #3C9300, #368200);
+	background: -o-linear-gradient(top, #3C9300, #368200);
+}
+button.redbtn {
+	border: 1px solid #D14836 !important;
+	background: #D64937;
+	background: -webkit-linear-gradient(top, #DC4A38, #D14836);
+	background: -moz-linear-gradient(top, #DC4A38, #D14836);
+	background: -ms-linear-gradient(top, #DC4A38, #D14836);
+	background: -o-linear-gradient(top, #DC4A38, #D14836);
+ -webkit-transition: border .20s;
+ -moz-transition: border .20s;
+ -o-transition: border .20s;
+ transition: border .20s;
+}
+button.redbtn:hover {
+	border: 1px solid #B0281A !important;
+	background: #D14130;
+	background: -webkit-linear-gradient(top, #DC4A38, #C53727);
+	background: -moz-linear-gradient(top, #DC4A38, #C53727);
+	background: -ms-linear-gradient(top, #DC4A38, #C53727);
+	background: -o-linear-gradient(top, #DC4A38, #C53727);
+}
+button.action:hover {
+	-moz-box-shadow: 0 1px 0px #DDD;
+	-webkit-box-shadow: 0 1px 0px #DDD;
+	box-shadow:iset 0 1px 0px #DDD;
+}
+button.action:active {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border-color: #C6C6C6 !important;
+}
+button.bluebtn:active {
+	border-color: #2F5BB7 !important;
+}
+button.greenbtn:active {
+	border-color: #2D6200 !important;
+}
+button.redbtn:active {
+	border-color: #B0281A !important;
+}
+/*------------------------------------*\
+	$BUTTON LABEL
+\*------------------------------------*/
+ button span.label {
+	display: inline-block;
+	float: left;
+	line-height: 17px;
+	height: 18px;
+	padding: 0 1px;
+	overflow: hidden;
+	color: #444;
+ -webkit-transition: color .20s;
+ -moz-transition: color .20s;
+ -o-transition: color .20s;
+ transition: color .20s;
+}
+button span.label {
+	line-height: 15px !important;
+}
+button:hover .label.bluebtn {
+	color: #7090C8;
+}
+button:hover .label.greenbtn {
+	color: #42B449;
+}
+button:hover .label.yellow {
+	color: #F7CB38;
+}
+button.bluebtn .label {
+	color: #FFF !important;
+	text-shadow: 0 1px 0 #2F5BB7 !important;
+}
+button.greenbtn .label {
+	color: #FFF !important;
+	text-shadow: 0 1px 0 #2D6200 !important;
+}
+button.redbtn .label {
+	color: #FFF !important;
+	text-shadow: 0 1px 0 #B0281A !important;
+}
+button.action .label {
+	padding: 0 17px !important;
+}
+button.action:active .label {
+	color: #333 !important;
+}
+button.bluebtn:active .label, button.greenbtn:active .label, button.redbtn:active .label {
+	color: #FFF !important;
+}

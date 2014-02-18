@@ -4,14 +4,15 @@
             [monger.collection :as coll]
             [clj-time.core :as time]
             [clj-time.coerce :as timec]
-            [digest])
+            [digest]
+            [clog.config :as config])
   (:use [monger.query])
   (:import [com.mongodb MongoOptions ServerAddress]
            [org.bson.types ObjectId]
            [com.mongodb DB WriteConcern]
            [org.mindrot.jbcrypt BCrypt]))
 
-(mg/connect-via-uri! "mongodb://blog:0xdeadbeef@troup.mongohq.com:10001/Clog")
+(mg/connect-via-uri! (str "mongodb://" (:username config/db-config) ":" (:password config/db-config) "@troup.mongohq.com:10001/Clog"))
 
 (defn time-now [] (timec/to-long (time/now)))
 
