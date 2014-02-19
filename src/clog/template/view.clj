@@ -1,8 +1,10 @@
 (ns clog.template.view
   (:require [hiccup.page :as page]
-            [clojure.data.json :as json])
+            [clojure.data.json :as json]
+            [clog.database :as db])
   (:use markdown.core
         clog.config
+        clog.util
         clog.template.util
         [clojure.string :only [join]]))
 
@@ -31,7 +33,7 @@
    [:body
     [:div#wrapper
      [:div#header
-      [:div#logo]
+      [:a {:href "/"} [:div#logo]]
       [:button#onlyButton.action.bluebtn
        [:span.label "≡"]]]
      [:div#contents content]
@@ -49,6 +51,10 @@
       [:p " I feel alright! "]]]
     #_[:script {:src "/js/cljs.js"}]
 ]))
+
+(defn new-post-view []
+  [:div
+   (link-to-new-post)])
 
 (defn post-view [post & username]
   [:div.post
@@ -68,23 +74,49 @@
      (if (not (nil? username))
        [:a {:href (str "/posts/" (:id post) "/edit")} "Edit"]))]])
 
-(defn title-editor [content]
-  [:h2 {:contenteditable "true" :class "posttitle post-title-editor font-hei"} content]
+(defn page-view [id & username]
+  (let [pc (db/page-count)]
+    (wrap-view
+       [:div
+        (new-post-view)
+        [:div
+       (map
+        (fn [po] (post-view po username))
+        (db/get-page-posts id ))
+        [:div {:class "pager"}
+         (if (< 1 id) [:a {:href (str "/page/" (- id 1))} "Prev"])
+         (if (> (- pc 1) id) [:a {:href (str "/page/" (+ id 1))} "Next"])]
+        ]])))
+
+(defn title-editor [post]
+  [:h2 {:contenteditable "true" :class "posttitle post-title-editor font-hei"} (:title post)]
   )
 
-(defn as-editor [as]
-  [:span {:contenteditable "false" :class "post-as-editor"}]
+(defn author-as-editor [post]
+
+  (let [author (:author post)
+        username (:username author)
+        as (:as author)]
+    [:span
+     [:span username]
+     " as "
+     [:span {:contenteditable "true" :class "post-as-editor"} as]])
   )
 
 (defn post-editor-view [post]
   (print (:id post))
   [:div {:data-id (str (:id post)) :data-tags (json/write-str (:tags post)) :class "post post-editor"}
-   (title-editor (:title post))
+   (link-to-view-post (:id post))
+   (title-editor post)
    [:p.postmeta
       [:div
-       (str (:username (:author post)) " as " (:as (:author post)) " at " (format-time (:time post))) ]
-      [:span "tags:"]#_[:span (->> post :tags (join " "))]
-      [:div {:id "picker"}]
+       (author-as-editor post)
+       " at "
+       (format-time (:time post))
+       [:span "tags:"]
+       #_[:span (->> post :tags (join " "))]
+       [:div {:id "picker"}]
+       ]
       ]
    [:textarea {:id "cm-editor"} (:content post)]
    [:button {:onclick "savePost(this)"} "Save"][:span {:id "post-post"}] ]

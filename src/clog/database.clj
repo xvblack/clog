@@ -6,7 +6,8 @@
             [clj-time.coerce :as timec]
             [digest]
             [clog.config :as config])
-  (:use [monger.query])
+  (:use [monger.query]
+        clog.util)
   (:import [com.mongodb MongoOptions ServerAddress]
            [org.bson.types ObjectId]
            [com.mongodb DB WriteConcern]
@@ -19,10 +20,15 @@
 (defn post-count []
   (coll/count "posts") )
 
-(defn insert-post [author title tags content]
+(declare insert-post)
+
+(defn new-post [username]
+  (insert-post username "akarin" "" [] ""))
+
+(defn insert-post [author as title tags content]
   (let [_id (ObjectId.)
         id (+ 1 (post-count))]
-    (coll/insert "posts" {:_id _id :id id  :title title :author author :tags tags :content content :time (time-now)}  )
+    (coll/insert "posts" {:_id _id :id id  :title title :status {:draft true} :author {:username author :as as} :tags tags :content content :time (time-now)}  )
     id))
 
 (defn get-post [id]
@@ -30,12 +36,18 @@
 
 (defn update-post [post]
   (let [ori (coll/find-one-as-map "posts" {:id (:id post)})
-        new (merge ori post)]
+        new (deep-merge ori post)]
     (println new)
     (coll/update "posts" {:id (:id post)} new)))
 
 (defn page-count [& pp]
   (+ (quot (post-count) (if (nil? pp) 10 pp) ) 1) )
+
+(defn validate-post-id [id]
+  (let [pc (post-count)]
+    (if (and (> id 0) (<= id pc))
+      id
+      nil)))
 
 (page-count)
 
@@ -74,23 +86,33 @@
   (let [tt ["moew" "wow" "minamisawa" "minecraft" "solidot" "tnt" "creeper"]]
     (into [] (filter (fn [s] (if (> (rand-int 10) 5) s)) tt)) ))
 
-(get-post 10)
+(defn rand-ret [arr]
+  (fn [] (get arr (rand-int (count arr)))))
 
-;(for [i (range 100)](insert-post (str "post " i) (rand-tag) "a" (str "post " i)))
+(defn register-as [username as]
+  )
 
-(->> (get-post 100) :tags (clojure.string/join " "))
+(def rand-as (rand-ret ["saber" "king arthur" "excalibur"]))
+
+;; (coll/remove "posts" {})
+
+;; (get-post 10)
+
+;; (for [i (range 100)](insert-post "saber" (rand-as) (str "post " i) (rand-tag)  (str "post " i)))
+
+;; (->> (get-post 100) :tags (clojure.string/join " "))
 
 
-(coll/count "users" {:username "aaa"})
+;; (coll/count "users" {:username "aaa"})
 
-(coll/find-maps "users" {:username "arthur"})
+;; (coll/find-maps "users" {:username "arthur"})
 
-(def a (BCrypt/gensalt))
+;; (def a (BCrypt/gensalt))
 
-(BCrypt/hashpw "aa" a)
+;; (BCrypt/hashpw "aa" a)
 
-(remove-user "arthur")
+;; (remove-user "arthur")
 
-(add-user "arthur" (digest/sha-256 "saber") )
+;; (add-user "arthur" (digest/sha-256 "saber") )
 
-;(update-post {:id 108 :title "post 99" :content "post 99 is here aaa"})
+;; (update-post {:id 108 :title "post 99" :content "post 99 is here aaa"})

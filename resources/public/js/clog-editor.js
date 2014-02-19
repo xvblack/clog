@@ -9,15 +9,15 @@ $("document").ready(function(){
 });
 
 function savePost(post){
-  console.log(post);
-  var post=document.getElementById("post-editor");
+  var post=document.getElementsByClassName("post-editor")[0];
   console.log(post);
   document.getElementById("post-post").innerText="saving";
   $.ajax({
     type:'POST',
-    url: '/posts/'+document.getElementsByClassName("post-editor")[0].dataset["id"],
+    url: '/posts/'+post.dataset["id"],
     data:{
-      title:document.getElementsByClassName("post-title-editor")[0].innerHTML,
+      title:post.getElementsByClassName("post-title-editor")[0].innerHTML,
+      as:post.getElementsByClassName("post-as-editor")[0].innerHTML,
       content:cm.getValue()
     }
   }).done(function(data){

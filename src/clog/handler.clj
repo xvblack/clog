@@ -60,16 +60,33 @@
     (if (and
          (< 0 id)
          (>= pc id))
-      (wrap-view
-       [:div
-       (map
-        (fn [po] (post-view po (get-username)))
-        (db/get-page-posts id ))
-        [:div {:class "pager"}
-         (if (< 1 id) [:a {:href (str "/page/" (- id 1))} "Prev"])
-         (if (> (- pc 1) id) [:a {:href (str "/page/" (+ id 1))} "Next"])]
-        ])
+      (page-view id (get-username))
       (not-found "are you finding akarin?") )))
+
+(defn post-handler [id]
+
+  (let [id (. Integer parseInt id)]
+    (if (and (> id 0) (<= id (db/post-count) ))
+      (wrap-view
+        (post-view
+         (db/get-post id)
+         (session-get :username)) )
+      (not-found "akarin? who is akarin?"))))
+
+(defn post-new-handler []
+  (let [username (session-get :username)]
+    (if-not (nil? username)
+      (let [id (db/new-post username)]
+        (redirect (str "/posts/" id "/edit")))
+      (redirect "/login"))))
+
+(defn post-edit-handler [id]
+  (if-let [id (db/validate-post-id (. Integer parseInt id))]
+    (let [username (session-get :username)]
+      (if-not (nil? username)
+        (wrap-view (post-editor-view (db/get-post id )))
+        (redirect "/login"))))
+  )
 
 (defroutes app-routes
   (GET "/" [] (page-handler "1") )
@@ -89,20 +106,22 @@
               (wrap-view [:div "logged in"]))
             (wrap-view [:div
                         [:div "wrong password"]]))) )
-  (GET "/page/:id" [id] (page-handler id) )
-  (GET "/posts/:id" [id] (wrap-view (post-view (db/get-post (. Integer parseInt id) )(session-get :username)) ))
+  (GET "/posts/new" []
+       (post-new-handler))
+  (GET "/page/:id" [id]
+       (page-handler id) )
+  (GET "/posts/:id" [id]
+       (post-handler id))
   (GET "/posts/:id/edit" [id]
-       (let [username (session-get :username)]
-         (if-not false ;(nil? username)
-           (wrap-view (post-editor-view (db/get-post (. Integer parseInt id) )))
-           (redirect "/login"))) )
+       (post-edit-handler id))
 
   (POST "/posts/:id" [id title content tags as]
-        (let [id (. Integer parseInt id)
-              args (into {} (filter val {:id id :title title :content content :tags tags :as as}))
-              writeresult (db/update-post args)]
-          (println args)
-          (wrap-view [:div writeresult])))
+        (if-let [id (db/validate-post-id (. Integer parseInt id))]
+          (let [args (into {} (filter val {:id id :title title :author {:as as} :content content :tags tags}))
+                writeresult (db/update-post args)]
+            (println args)
+            (wrap-view [:div writeresult]))
+          (route/not-found "")) )
 
   (route/resources "/")
   (route/not-found "Not Found"))
