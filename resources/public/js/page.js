@@ -29,6 +29,15 @@
   			{
   				hideSideBar();
   			}
+  			if(viewportWidth*0.6>1200)
+  			{
+  				// calculate the newsize of wrapper
+  				var newPadding = ((viewportWidth * 0.8) - 1200) / 2;
+  				$("#wrapper").css({
+		  						"padding-left": newPadding,
+		  						"padding-right": newPadding
+		  					});
+  			}
   			// we also create a listener to automatically do this.
   			// maybe refactorated to a function.
   			$( window ).resize(function() {
@@ -40,7 +49,20 @@
 	  			}
 	  			else
 	  			{
-	  				showSideBar();
+	  				if(viewportWidth*0.6>1200)
+		  			{
+		  				// calculate the newsize of wrapper
+		  				var newPadding = ((viewportWidth * 0.8) - 1200) / 2;
+		  				$("#wrapper").css({
+		  						"padding-left": newPadding,
+		  						"padding-right": newPadding
+		  					});
+	  				}
+	  				else
+	  				{
+	  					showSideBar();
+	  				}
+	  				
 	  			}
 			});
 		});
