@@ -48,12 +48,12 @@
 (defn login-view []
   [:div {:id "login-view"}
    [:form {:action "session/new" :method "post" :onsubmit "return secureSubmit(this)"}
-    [:h2 "username"]
+    [:h2 "Username:"]
     [:input {:type "text" :name "username"}]
-    [:h2 "password"]
+    [:h2 "Password:"]
     [:input {:type "password" :name "password"}]
     [:br ]
-    [:input {:type "submit" :value "login"}]]])
+    [:input#submitbutton {:type "submit" :value "login"}]]])
 
 (defn page-handler [id]
   (let [id (. Integer parseInt id)

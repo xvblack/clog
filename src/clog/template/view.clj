@@ -72,7 +72,7 @@
    [:div.post-actions
     (wrap-ul
      (if (not (nil? username))
-       [:a {:href (str "/posts/" (:id post) "/edit")} "Edit"]))]])
+       [:p.postaction [:a {:href (str "/posts/" (:id post) "/edit")} "Edit"]]))]])
 
 (defn page-view [id & username]
   (let [pc (db/page-count)]
@@ -108,16 +108,15 @@
   [:div {:data-id (str (:id post)) :data-tags (json/write-str (:tags post)) :class "post post-editor"}
    (link-to-view-post (:id post))
    (title-editor post)
-   [:p.postmeta
-      [:div
-       (author-as-editor post)
-       " at "
-       (format-time (:time post))
-       [:span "tags:"]
-       #_[:span (->> post :tags (join " "))]
-       [:div {:id "picker"}]
-       ]
-      ]
+    [:div.editormeta
+      (author-as-editor post)
+      " at "
+      (format-time (:time post))
+      [:span "tags:"]
+      #_[:span (->> post :tags (join " "))]
+      [:br ]
+      [:div {:id "picker"}]
+     ]
    [:textarea {:id "cm-editor"} (:content post)]
-   [:button {:onclick "savePost(this)"} "Save"][:span {:id "post-post"}] ]
+   [:button.greenbtn {:onclick "savePost(this)"} [:span.label "Save"]] [:span {:id "post-post"}] ]
   #_[:div {:data-id (str (:id post)) :class "post post-react-editor"}])

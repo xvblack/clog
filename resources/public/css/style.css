@@ -42,13 +42,29 @@ body{
 	font-family: "Open Sans";
 	font-style: italic;
 	font-size: 12px;
-	margin-top:4px;
-	border-bottom: 1px
+	margin-top:7px;
+	border-bottom: 1px;
 }
 .postcontent{
-	margin-top: 10px;
+	margin-top: 15px;
 	color:#454545;
 	font-size: 15px;
+}
+.postaction{
+	color:#555;
+	font-family: "Open Sans";
+	font-size: 14px;
+	margin-top:25px;
+	padding-top: 10px;
+	border-top: 1px #EEE solid;
+	border-bottom: 1px;
+}
+.postaction a{
+	text-decoration: none;
+	color:#78b437
+}
+.postaction a:hover{
+	border-bottom: 1px dashed #78b437;
 }
 #logo{
 	background-image: url('/img/logo.png');
@@ -243,14 +259,49 @@ body{
 	margin-bottom: 5px;
 }
 
+#submitbutton{
+	margin-top: 15px;
+	width:60px;
+	text-align: center;
+	font-family: 'Open Sans';
+	font-size: 16px;
+}
 
+/* editor view */
+ .editormeta{
+ 	color: #333;
+	font-family: "Open Sans";
+	font-style: italic;
+	font-size: 14px;
+	margin-top: 7px;
+	border-bottom: 1px;
+	border:#ddd solid 1px;
+ }
 
+.post-title-editor{
+	border:#ddd solid 1px;
+}
+.post-as-editor{
+	border-bottom: 1px dashed #78b437;
+	color : #78b437;
+}
 
-
-
-
-
-
+.post-as-editor:before{
+	content:': ';
+	color:#78b437;
+}
+.tagPicker ul li{
+	display: block;
+}
+.tagPicker ul li{
+	float:left;
+	margin-right: 10px;
+}
+.CodeMirror{
+	clear:both;
+	margin-top: 30px;
+	border:1px #333 solid;
+}
 
 
 
@@ -271,7 +322,7 @@ button {
 	line-height: 17px;
 	height: 18px;
 	display: inline-block;
-	float: left;
+	/*float: left;*/
 	margin: 5px;
 	padding: 5px 0px 4px 0px;
 	background: #F3F3F3;
