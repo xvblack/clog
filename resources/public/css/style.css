@@ -230,6 +230,33 @@ body{
 .buttons {
 	zoom: 1;
 }
+
+/* Login page */
+
+#login-view{
+	font-family: 'Open Sans';
+	font-size: 16px;
+}
+
+#login-view form h2{
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ------------------------ */
 
 

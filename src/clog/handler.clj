@@ -52,6 +52,7 @@
     [:input {:type "text" :name "username"}]
     [:h2 "password"]
     [:input {:type "password" :name "password"}]
+    [:br ]
     [:input {:type "submit" :value "login"}]]])
 
 (defn page-handler [id]
