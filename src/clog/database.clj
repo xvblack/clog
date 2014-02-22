@@ -6,7 +6,7 @@
             [clj-time.coerce :as timec]
             [digest]
             [clog.config :as config])
-  (:use [monger.query]
+  (:use monger.query
         clog.util)
   (:import [com.mongodb MongoOptions ServerAddress]
            [org.bson.types ObjectId]
@@ -46,6 +46,12 @@
 (defn validate-post-id [id]
   (let [pc (post-count)]
     (if (and (> id 0) (<= id pc))
+      id
+      nil)))
+
+(defn validate-page-id [id]
+  (let [pc (post-count)]
+    (if (and (> id 0) (<= id (page-count)))
       id
       nil)))
 
