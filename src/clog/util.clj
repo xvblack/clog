@@ -1,4 +1,6 @@
-(ns clog.util)
+(ns clog.util
+  (:require [clojure.data.json :as json])
+  (:use clostache.parser))
 
 (defn link-to [text & args]
   [:a {:href (apply str args)} text])
@@ -32,3 +34,23 @@
 
 (defn deep-merge [& maps]
   (apply deep-merge-with (fn [_ x] x) maps))
+
+(defmacro defwidget [wn params & {:keys [body]} ]
+  (list 'defn wn params (cons 'do body)))
+
+(defn react-widget [component-name & [props]]
+  [:div
+   [:div {:class (str component-name)}]
+   [:script {:type "javascript"}
+    (render
+     ""
+     )
+    ]])
+
+(react-widget "TagsPicker")
+
+(defwidget simple-widget [n]
+  :body
+  (prn n))
+
+(simple-widget 10)
