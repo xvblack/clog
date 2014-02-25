@@ -2,10 +2,7 @@
   (:require [hiccup-bridge.core :as hc]
             [clj-time.core :as time]
             [hiccup.page :as page])
-  (:use clj-time.format
-        clj-time.coerce
-        markdown.core
-        clog.config))
+  (:use clog.config))
 
 
 (defn simple-recur-path [tr ks]
@@ -36,10 +33,6 @@
                            (into [] v)
                            (fn [x] (k update-value)) ))
               template positions))) )
-
-(defn format-time [time-long]
-  (let [time-format (formatter "MMM dd,yyyy hh:mm")]
-    (unparse time-format (from-long time-long))))
 
 (defn wrap-ul [& items]
   [:ul

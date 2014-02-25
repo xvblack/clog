@@ -4,7 +4,9 @@
         [clojure.string :only [join]]
         sandbar.stateful-session
         clog.template.view
-        clog.config)
+        clog.config
+        clog.util.stateful-request
+        clog.wrap-view)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [clog.database :as db]
@@ -32,7 +34,7 @@
 
 (defn page-handler [id]
   (if-let [id (-> id parse-id db/validate-page-id)]
-    (page-view id (get-username))
+    (wrap-view (page-view id (get-username)))
     (not-found "are you finding akarin?") ))
 
 (defn post-handler [id]
@@ -81,10 +83,11 @@
 
 (defroutes app-routes
   (GET "/" [] (page-handler 1) )
-  ;;   (GET "/ind" []
-  ;;        (do
-  ;;          (println (session-get :username))
-  ;;          (wrap-view (session-get :username))))
+  (GET "/ind" []
+       (do
+         (request-put :a "asuna")
+         (println (session-get :username))
+         (wrap-view (request-get :a))))
   (GET "/login" []
        (login-handler) )
   (POST "/session/new" [username password]
@@ -104,6 +107,6 @@
   (route/resources "/")
   (route/not-found "Not Found"))
 
-
 (def app
-  (wrap-stateful-session (handler/site app-routes)))
+  (-> (wrap-stateful-session (handler/site app-routes))
+      wrap-stateful-request))
