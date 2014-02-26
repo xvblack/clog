@@ -9,3 +9,11 @@ pom.xml.asc
 /.lein-*
 /.nrepl-port
 config.clj
+.DS_Store
+.idea/clojure_project.xml
+
+.idea/clojure_project.xml
+
+.idea/.name
+
+.idea/compiler.xml

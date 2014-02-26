@@ -33,7 +33,3 @@
                            (into [] v)
                            (fn [x] (k update-value)) ))
               template positions))) )
-
-(defn wrap-ul [& items]
-  [:ul
-   (map (fn [x] [:li x]) items)])

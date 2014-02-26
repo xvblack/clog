@@ -41,3 +41,8 @@
   (let [time-format (formatter "MMM dd,yyyy hh:mm")]
     (unparse time-format (from-long time-long))))
 
+(defn wrap-ul [& items]
+  [:ul
+   (map (fn [x] [:li x]) items)])
+
+

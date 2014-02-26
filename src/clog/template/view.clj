@@ -59,10 +59,7 @@
         (if (< 1 id) [:a {:href (str "/page/" (- id 1))} "Prev"])
         (if (> (- pc 1) id) [:a {:href (str "/page/" (+ id 1))} "Next"])]
        ]]
-     :sidebar
-     [(if-not username
-       (login-view)
-       (user-info-view username))]))
+     ))
 
 (defn title-editor [post]
   [:h2 {:contenteditable "true" :class "posttitle post-title-editor font-hei"} (:title post)]

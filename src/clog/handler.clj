@@ -6,13 +6,18 @@
         clog.template.view
         clog.config
         clog.util.stateful-request
-        clog.wrap-view)
+        clog.wrap-view
+        clog.util.widget
+        clog.widgets.basic
+        clog.widgets.post)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [clog.database :as db]
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [clog.util.stateful-loader :as stateful]))
 
-(defn get-username [] (session-get :username))
+(defn get-username []
+  (session-get :username))
 
 (defn parse-id [id]
   (if (instance? Number id)
@@ -32,18 +37,21 @@
     (response/redirect url)
     (response/redirect default)))
 
+(defn wrap-view-with-widgets [mainpage]
+  (wrap-view mainpage
+             :sidebars
+             [(build-widget :sidewidget-user)]))
+
 (defn page-handler [id]
   (if-let [id (-> id parse-id db/validate-page-id)]
-    (wrap-view (page-view id (get-username)))
+    (wrap-view-with-widgets (page-view id (get-username)))
     (not-found "are you finding akarin?") ))
 
 (defn post-handler [id]
   (if-let [id (-> id parse-id db/validate-post-id)]
-    (wrap-view
-     (post-view
-      (db/get-post id)
-      (session-get :username))
-     (get-username))
+    (wrap-view-with-widgets
+     (build-widget :post
+      (db/get-post id)))
     (not-found "akarin? who is akarin?")))
 
 (defn post-new-handler []
@@ -55,7 +63,7 @@
 (defn post-edit-handler [id]
   (if-let [id (-> id parse-id db/validate-post-id)]
     (if-let [username (get-username)]
-      (wrap-view (post-editor-view (db/get-post id )))
+      (wrap-view-with-widgets (post-editor-view (db/get-post id )))
       (redirect "/login")))
   )
 
@@ -65,7 +73,7 @@
       (let [args (into {} (filter val {:id id :title title :author {:as as} :content content :tags tags}))
             writeresult (db/update-post args)]
         (println args)
-        (wrap-view [:div writeresult]))
+        (wrap-view-with-widgets [:div writeresult]))
       (route/not-found ""))))
 
 (defn login-handler []
@@ -108,5 +116,7 @@
   (route/not-found "Not Found"))
 
 (def app
-  (-> (wrap-stateful-session (handler/site app-routes))
-      wrap-stateful-request))
+  (-> (handler/site app-routes)
+      stateful/wrap-username
+      wrap-stateful-request
+      wrap-stateful-session))

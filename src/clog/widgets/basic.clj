@@ -1,6 +1,8 @@
 (ns clog.widgets.basic
-  (:require [clojure.data.json :as json])
-  (:use clog.util.widget))
+  (:require [clojure.data.json :as json]
+            [clog.database])
+  (:use clog.util.widget
+        clog.util.stateful-request))
 
 (def-widget :about []
   :body
@@ -12,7 +14,7 @@
 
 (def-widget :js-loader [& scripts]
   :body
-  (into [] (map (fn [n] [:script {:src n}]) scripts)))
+  (into () (map (fn [n] [:script {:src n}]) (reverse scripts))))
 
 ;; (build-widget :js-loader "/jquery.js" "a")
 
@@ -26,6 +28,34 @@
 
 (def-widget :css-loader [& csss]
   :body
-  (into [] (map (fn [css] [:link {:rel "stylesheet" :href css}]) csss)))
+  (into () (map (fn [css] [:link {:rel "stylesheet" :href css}]) (reverse csss))))
 
 ;; (build-widget :css-loader "/page.css")
+
+;; (def-widget :about-author [profile-name]
+;;   ())
+
+(def-widget :sidewidget-user []
+  :body
+  (if-let [username (request-get :username)]
+    (build-widget :user-info username)
+    (build-widget :login))
+  )
+
+(def-widget :login []
+  :body
+  [:div {:id "login-view"}
+   [:form {:action "session/new" :method "post" :onsubmit "return secureSubmit(this)"}
+    [:h2 "username"]
+    [:input {:type "text" :name "username"}]
+    [:h2 "password"]
+    [:input {:type "password" :name "password"}]
+    [:input {:type "submit" :value "login"}]]])
+
+(def-widget :user-info [username]
+  :body
+  [:div {:id "user-info"}
+   [:div
+    [:label "name"]
+    [:p username]]
+   ])
