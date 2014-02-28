@@ -1,6 +1,6 @@
 var cm;
 $("document").ready(function(){
-  var editor=document.getElementById("cm-editor");
+  var editor=document.getElementsByClassName("cm-editor")[0];
   if (editor==undefined) return;
   cm=CodeMirror.fromTextArea(editor,{mode:"markdown",theme:"default",extraKeys:{Tab:function(cm) {
     var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
@@ -11,7 +11,7 @@ $("document").ready(function(){
 function savePost(post){
   var post=document.getElementsByClassName("post-editor")[0];
   console.log(post);
-  document.getElementById("post-post").innerText="saving";
+  document.getElementsByClassName("post-post")[0].innerText="saving";
   $.ajax({
     type:'POST',
     url: '/posts/'+post.dataset["id"],
@@ -22,6 +22,6 @@ function savePost(post){
     }
   }).done(function(data){
     console.log(data);
-    document.getElementById("post-post").innerText="";
+    document.getElementsByClassName("post-post")[0].innerText="";
   });
 }

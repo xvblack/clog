@@ -89,5 +89,5 @@ var tags=["aa","bb"];
 var datas=document.getElementsByClassName("post-editor")[0].dataset;
 var comp=React.renderComponent(
   <TagsPicker tags={JSON.parse(datas["tags"])} postid={datas["id"]}/>,
-  document.getElementById('picker')
+  document.getElementsByClassName('picker')[0]
 );

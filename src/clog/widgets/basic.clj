@@ -35,7 +35,7 @@
 ;; (def-widget :about-author [profile-name]
 ;;   ())
 
-(def-widget :sidewidget-user []
+(def-widget :sidewidget/user []
   :body
   (if-let [username (request-get :username)]
     (build-widget :user-info username)

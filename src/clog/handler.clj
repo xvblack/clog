@@ -40,11 +40,13 @@
 (defn wrap-view-with-widgets [mainpage]
   (wrap-view mainpage
              :sidebars
-             [(build-widget :sidewidget-user)]))
+             [(build-widget :sidewidget/user)
+              #_(build-widget :sidewidget-about-site)]))
 
 (defn page-handler [id]
   (if-let [id (-> id parse-id db/validate-page-id)]
-    (wrap-view-with-widgets (page-view id (get-username)))
+    (wrap-view-with-widgets
+     (build-widget :page id))
     (not-found "are you finding akarin?") ))
 
 (defn post-handler [id]
@@ -63,7 +65,8 @@
 (defn post-edit-handler [id]
   (if-let [id (-> id parse-id db/validate-post-id)]
     (if-let [username (get-username)]
-      (wrap-view-with-widgets (post-editor-view (db/get-post id )))
+      (wrap-view-with-widgets
+       (build-widget :post-editor (db/get-post id)))
       (redirect "/login")))
   )
 
@@ -78,7 +81,8 @@
 
 (defn login-handler []
   (if (nil? (session-get :username))
-    (wrap-view (login-view))
+    (wrap-view
+     (build-widget :login))
     (wrap-view "already logged in")))
 
 (defn session-new-handler [username password]
