@@ -45,4 +45,7 @@
   [:ul
    (map (fn [x] [:li x]) items)])
 
+(defn js-call [func & args]
+  (str func "(" args ")"))
 
+(js-call "a" {1 1})

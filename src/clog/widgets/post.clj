@@ -34,23 +34,25 @@
   :body
   [:a {:href "/posts/new"}])
 
-(def-widget :page [id]
+(def-widget :posts [posts]
   :body
-  (let [posts (db/get-page-posts id)
-        pc (db/page-count)]
-     [:div
-      (if (not (nil? (request-get :username)))
-        (build-widget :new-post))
-      [:div
-       (map
-        (fn [po]
-          (build-widget :post po))
-        posts)
-       [:div {:class "pager"}
-        (if (< 1 id) [:a {:href (str "/page/" (- id 1))} "Prev"])
-        (if (> (- pc 1) id) [:a {:href (str "/page/" (+ id 1))} "Next"])]
-       ]]
-     ))
+  [:div
+   (map
+    (fn [po]
+      (build-widget :post po))
+    posts)])
+
+(def-widget :page [id pc posts]
+  :body
+  [:div
+   (if (not (nil? (request-get :username)))
+     (build-widget :new-post))
+   (build-widget :posts posts)
+   [:div {:class "pager"}
+    (if (< 1 id) [:a {:href (str "/page/" (- id 1))} "Prev"])
+    (if (> (- pc 1) id) [:a {:href (str "/page/" (+ id 1))} "Next"])]
+   ]
+  )
 
 (def-widget :title-editor [post]
   :body

@@ -34,6 +34,19 @@
 (defn get-post [id]
   (first (coll/find-maps "posts" {:id id})))
 
+(defn get-drafts []
+  (coll/find-maps "posts" {:status {:draft true}}))
+
+(defn publish-post [id]
+  (let [ori (get-post id)
+        new (update-in ori [:status :draft] (fn [x] false))]
+    (coll/update "posts" {:id id} new)))
+
+(defn draft-post [id]
+  (let [ori (get-post id)
+        new (update-in ori [:status :draft] (fn [x] true))]
+    (coll/update "posts" {:id id} new)))
+
 (defn update-post [post]
   (let [ori (coll/find-one-as-map "posts" {:id (:id post)})
         new (deep-merge ori post)]
@@ -55,12 +68,10 @@
       id
       nil)))
 
-(page-count)
-
 (defn get-page-posts [id & pp]
   (let [pp (if (not (nil? pp)) pp 10)]
     (with-collection "posts"
-          (find {})
+          (find {:status {:draft false}})
           (sort (array-map :time -1))
           (limit 10)
           (skip (* 10 (- id 1))))
@@ -99,6 +110,21 @@
   )
 
 (def rand-as (rand-ret ["saber" "king arthur" "excalibur"]))
+
+(defn rand-key []
+  (clojure.string/join (map (fn [_] (rand-nth "0123456789abcdefghijklmnopqrstuvwxyz")) (range 20))))
+
+(defn add-rkey []
+  (let [rkey (rand-key)]
+    (coll/insert "rkeys" {:_id (ObjectId.) :rkey rkey})
+    rkey))
+
+(defn validate-rkey? [rkey]
+  (if-let [rk (coll/find-one-as-map "rkeys" {:rkey rkey})]
+    (do
+      (coll/remove "rkeys" {:rkey rkey})
+      true)
+    false) )
 
 ;; (coll/remove "posts" {})
 

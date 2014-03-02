@@ -45,8 +45,10 @@
 
 (defn page-handler [id]
   (if-let [id (-> id parse-id db/validate-page-id)]
-    (wrap-view-with-widgets
-     (build-widget :page id))
+    (let [pc (db/page-count)
+          posts (db/get-page-posts id)]
+      (wrap-view-with-widgets
+       (build-widget :page id pc posts)))
     (not-found "are you finding akarin?") ))
 
 (defn post-handler [id]
@@ -93,6 +95,26 @@
     (wrap-view [:div
                 [:div "wrong password"]])) )
 
+(defn register-handler []
+  (if (nil? (session-get :username))
+    (wrap-view
+     (build-widget :register))
+    (wrap-view "already logged in")))
+
+(defn user-new-handler [username password rkey]
+  (if (db/validate-rkey? rkey)
+    (do
+      (db/add-user username password)
+      (wrap-view "registered")
+      )
+    (wrap-view "register key is not valid"))
+  )
+
+(defn post-drafts-handler []
+  (if-not (nil? (session-get :username))
+    (wrap-view-with-widgets (build-widget :posts (db/get-drafts)))
+    (redirect "/")) )
+
 (defroutes app-routes
   (GET "/" [] (page-handler 1) )
   (GET "/ind" []
@@ -104,8 +126,14 @@
        (login-handler) )
   (POST "/session/new" [username password]
         (session-new-handler username password))
+  (GET "/register" []
+       (register-handler))
+  (POST "/users/new" [username password rkey]
+        (user-new-handler username password rkey))
   (GET "/posts/new" []
        (post-new-handler))
+  (GET "/posts/drafts" []
+       (post-drafts-handler))
   (GET "/page/:id" [id]
        (page-handler id) )
   (GET "/posts/:id" [id]

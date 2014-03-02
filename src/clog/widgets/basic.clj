@@ -50,7 +50,20 @@
     [:input {:type "text" :name "username"}]
     [:h2 "password"]
     [:input {:type "password" :name "password"}]
-    [:input {:type "submit" :value "login"}]]])
+    [:input {:type "submit" :value "login"}]]
+   [:a {:href "/register"} "register"]])
+
+(def-widget :register []
+  :body
+  [:div {:id "register-view"}
+   [:form {:action "users/new" :method "post" :onsubmit "return secureSubmit(this)"}
+    [:h2 "username"]
+    [:input {:type "text" :name "username"}]
+    [:h2 "password"]
+    [:input {:type "password" :name "password"}]
+    [:h2 "register key"]
+    [:input {:type "text" :name "rkey"}]
+    [:input {:type "submit" :value "register"}]]])
 
 (def-widget :user-info [username]
   :body
