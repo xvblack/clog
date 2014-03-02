@@ -68,6 +68,10 @@
      " as "
      [:span {:contenteditable "true" :class "post-as-editor"} as]]))
 
+(def-widget :publish-check [post]
+  :body
+  (if (not (-> post :status :draft)) [:input {:type "checkbox" :class "publish-check" :checked "on"} "publish"] [:input {:type "checkbox" :class "publish-check"} "publish"]))
+
 (def-widget :post-editor [post]
   :body
   [:div {:data-id (str (:id post)) :data-tags (json/write-str (:tags post)) :class "post post-editor"}
@@ -84,5 +88,6 @@
      ]
     ]
    [:textarea {:class "cm-editor"} (:content post)]
-   [:button {:onclick "savePost(this)"} "Save"][:span {:class "post-post"}] ]
+   (build-widget :publish-check post)
+   [:button {:onclick "savePost(this)"} "Save"][:span {:class "post-post"}]]
   #_[:div {:data-id (str (:id post)) :class "post post-react-editor"}])

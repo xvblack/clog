@@ -71,4 +71,5 @@
    [:div
     [:label "name"]
     [:p username]]
+   [:a {:href "/posts/drafts"} "drafts"]
    ])

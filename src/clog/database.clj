@@ -7,6 +7,7 @@
             [digest]
             [clog.config :as config])
   (:use monger.query
+        monger.operators
         clog.util)
   (:import [com.mongodb MongoOptions ServerAddress]
            [org.bson.types ObjectId]
@@ -15,9 +16,9 @@
 
 (mg/connect-via-uri! (str "mongodb://" (:username config/db-config) ":" (:password config/db-config) "@troup.mongohq.com:10001/Clog"))
 
-(defn time-now [] (timec/to-long (time/now)))
+(defn- time-now [] (timec/to-long (time/now)))
 
-(defn post-count []
+(defn- post-count []
   (coll/count "posts") )
 
 (declare insert-post)
@@ -32,26 +33,42 @@
     id))
 
 (defn get-post [id]
-  (first (coll/find-maps "posts" {:id id})))
+  (coll/find-one-as-map "posts" {:id id}))
+
+(defn get-posts [param]
+  (coll/find-maps "posts" param))
 
 (defn get-drafts []
-  (coll/find-maps "posts" {:status {:draft true}}))
+  (get-posts {:status {:draft true}}))
 
-(defn publish-post [id]
-  (let [ori (get-post id)
-        new (update-in ori [:status :draft] (fn [x] false))]
-    (coll/update "posts" {:id id} new)))
+(defn- update [coll fp up]
+  (let [to-$set (fn to-$set [attr-map]
+                  (reduce (fn [new-attr-map [k v]] (if (map? v)
+                                        (map #(assoc new-attr-map (keyword (str (name k) "." (name (first %)))) (second %)) (to-$set v))
+                                        (assoc new-attr-map k v)))))])
+  )
+(defn to-$set [attr-map]
+  (reduce (fn [new-attr-map [k v]] (if (map? v)
+                                     (let [v (to-$set v)]
+                                       (reduce (fn [new-attr-map [kk vv]] (assoc new-attr-map (keyword (str (name k) "." (name kk))) vv))
+                                            new-attr-map v))
+                                     (assoc new-attr-map k v))) {} attr-map))
 
-(defn draft-post [id]
-  (let [ori (get-post id)
-        new (update-in ori [:status :draft] (fn [x] true))]
-    (coll/update "posts" {:id id} new)))
+;; (defn update-post [post]
+;;   (let [ori (coll/find-one-as-map "posts" {:id (:id post)})
+;;         new (deep-merge ori post)]
+;;     (println new)
+;;     (coll/update "posts" {:id (:id post)} new)))
 
 (defn update-post [post]
-  (let [ori (coll/find-one-as-map "posts" {:id (:id post)})
-        new (deep-merge ori post)]
-    (println new)
-    (coll/update "posts" {:id (:id post)} new)))
+  (let [set-attrs (to-$set post)]
+    (coll/update "posts" {:id (:id post)} {$set set-attrs})))
+
+(defn publish-post [id]
+  (update-post {:id id :status {:draft false}}))
+
+(defn draft-post [id]
+  (update-post {:id id :status {:draft true}}))
 
 (defn page-count [& pp]
   (+ (quot (post-count) (if (nil? pp) 10 pp) ) 1) )
@@ -71,11 +88,10 @@
 (defn get-page-posts [id & pp]
   (let [pp (if (not (nil? pp)) pp 10)]
     (with-collection "posts"
-          (find {:status {:draft false}})
-          (sort (array-map :time -1))
-          (limit 10)
-          (skip (* 10 (- id 1))))
-  ))
+      (find {:status {:draft false}})
+      (sort (array-map :time -1))
+      (paginate :page id :per_page pp))
+    ))
 
 (defn check-username-exist? [username]
   (= (coll/count "users" {:username username}) 1) )
@@ -148,3 +164,8 @@
 ;; (add-user "arthur" (digest/sha-256 "saber") )
 
 ;; (update-post {:id 108 :title "post 99" :content "post 99 is here aaa"})
+
+(with-collection "posts"
+  (find {})
+  (sort {:time -1} )
+  (paginate :page 1 :per_page 10))

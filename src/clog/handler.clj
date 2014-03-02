@@ -72,14 +72,17 @@
       (redirect "/login")))
   )
 
-(defn post-update-handler [id title content tags as]
+(defn post-update-handler [id title content tags as publish]
   (if-let [username (get-username)]
     (if-let [id (db/validate-post-id (. Integer parseInt id))]
-      (let [args (into {} (filter val {:id id :title title :author {:as as} :content content :tags tags}))
+      (let [publish (= publish "true")
+            args (into {} (filter (comp not nil? val) {:id id :title title :author {:as as} :content content :tags tags :status {:draft (not publish)}}))
             writeresult (db/update-post args)]
         (println args)
         (wrap-view-with-widgets [:div writeresult]))
       (route/not-found ""))))
+
+(map (comp nil? val) {:a nil})
 
 (defn login-handler []
   (if (nil? (session-get :username))
@@ -141,8 +144,8 @@
   (GET "/posts/:id/edit" [id]
        (post-edit-handler id))
 
-  (POST "/posts/:id" [id title content tags as]
-        (post-update-handler id title content tags as))
+  (POST "/posts/:id" [id title content tags as publish]
+        (post-update-handler id title content tags as publish))
 
   (route/resources "/")
   (route/not-found "Not Found"))

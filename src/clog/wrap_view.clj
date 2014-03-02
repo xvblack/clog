@@ -16,7 +16,6 @@
   (request-get :_js-share))
 
 (defn wrap-view [content & {:keys [sidebars]}]
-  (prn sidebars)
   (let [sidebars (if-not (vector? (first sidebars)) [sidebars] sidebars)]
     (page/html5
    [:meta {:charset "utf-8"}]

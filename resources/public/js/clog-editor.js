@@ -18,6 +18,7 @@ function savePost(post){
     data:{
       title:post.getElementsByClassName("post-title-editor")[0].innerHTML,
       as:post.getElementsByClassName("post-as-editor")[0].innerHTML,
+      publish:post.getElementsByClassName("publish-check")[0].checked,
       content:cm.getValue()
     }
   }).done(function(data){
