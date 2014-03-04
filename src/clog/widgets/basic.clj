@@ -71,5 +71,8 @@
    [:div
     [:label "name"]
     [:p username]]
-   [:a {:href "/posts/drafts"} "drafts"]
+   [:ul
+    [:li [:a {:href "/posts/drafts"} "Drafts"]]
+    [:li (build-widget :action/new-post)]
+    ]
    ])

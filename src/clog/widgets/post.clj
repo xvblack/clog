@@ -30,9 +30,9 @@
        (build-widget :post-edit-link post)
        ))]])
 
-(def-widget :new-post []
+(def-widget :action/new-post []
   :body
-  [:a {:href "/posts/new"}])
+  [:a {:href "/posts/new"} "New post"])
 
 (def-widget :posts [posts]
   :body
@@ -45,8 +45,8 @@
 (def-widget :page [id pc posts]
   :body
   [:div
-   (if (not (nil? (request-get :username)))
-     (build-widget :new-post))
+   #_(if (not (nil? (request-get :username)))
+     (build-widget :action/new-post))
    (build-widget :posts posts)
    [:div {:class "pager"}
     (if (< 1 id) [:a {:href (str "/page/" (- id 1))} "Prev"])
