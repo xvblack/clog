@@ -65,14 +65,16 @@
     [:input {:type "text" :name "rkey"}]
     [:input {:type "submit" :value "register"}]]])
 
+(def-widget :user-avatar [username]
+  :body
+  [:img {:id "userInfoAvatar" :src (str "/img/avatar/" username ".png") :width "64px" :height "64px"}])
+
 (def-widget :user-info [username]
   :body
   [:div {:id "user-info"}
-   [:div
-    [:label "name"]
-    [:p username]]
-   [:ul
-    [:li [:a {:href "/posts/drafts"} "Drafts"]]
-    [:li (build-widget :action/new-post)]
-    ]
+   (build-widget :user-avatar username)
+   [:div {:id "userActions"}
+    [:p {:class "username"} username]
+    [:p [:a {:href "/posts/drafts"} "Drafts"]]
+    [:p (build-widget :action/new-post)]]
    ])
