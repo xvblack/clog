@@ -39,7 +39,7 @@
   :body
   (if-let [username (request-get :username)]
     (build-widget :user-info username)
-    (build-widget :login))
+    (build-widget :guest-info))
   )
 
 (def-widget :login []
@@ -77,4 +77,13 @@
     [:p {:class "username"} username]
     [:p [:a {:href "/posts/drafts"} "Drafts"]]
     [:p (build-widget :action/new-post)]]
+   ])
+
+(def-widget :guest-info []
+  :body
+  [:div {:id "user-info"}
+   (build-widget :user-avatar "guest")
+   [:div {:id "userActions"}
+    [:p {:class "username"} "Akarin"]
+    [:p [:a {:href "/login"} "Login"]]]
    ])

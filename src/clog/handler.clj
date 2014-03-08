@@ -104,10 +104,10 @@
      (build-widget :register))
     (wrap-view "already logged in")))
 
-(defn user-new-handler [username password rkey]
+(defn user-new-handler [username password rkey email]
   (if (db/validate-rkey? rkey)
     (do
-      (db/add-user username password)
+      (db/add-user username password email)
       (wrap-view "registered")
       )
     (wrap-view "register key is not valid"))

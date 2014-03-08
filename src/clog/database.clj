@@ -112,6 +112,9 @@
         false)
       false)))
 
+(defn get-user [username]
+  (coll/find-one-as-map "users" {:username username}))
+
 (defn remove-user [username]
   (coll/remove "users" {:username username}))
 
