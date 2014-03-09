@@ -10,6 +10,19 @@ $("document").ready(function(){
                                 cm.replaceSelection(spaces, "end", "+input");
                               }},
                               lineWrapping: true});
+  inlineOptions={
+    uploadUrl: "/upload",
+    allowedTypes: [
+      'image/jpeg',
+      'image/png',
+      'image/jpg',
+      'image/gif'
+    ],
+    progressText: '![Uploading file...]()',
+    urlText: "![file]({filename})",
+    errorText: "Error uploading file"
+  };
+  inlineAttach.attachToCodeMirror(cm,inlineOptions);
 });
 
 function savePost(post){

@@ -4,7 +4,6 @@
         [clojure.string :only [join]]
         sandbar.stateful-session
         clog.template.view
-        clog.config
         clog.util.stateful-request
         clog.wrap-view
         clog.util.widget
@@ -12,9 +11,14 @@
         clog.widgets.post)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
-            [clog.database :as db]
             [ring.util.response :as response]
-            [clog.util.stateful-loader :as stateful]))
+            [clog.util.stateful-loader :as stateful]
+            [clog.model.post :as post]
+            [clog.model.user :as user]
+            [clojure.java.io :as io]
+            [clog.config :as config]
+            [clog.util :as util]
+            [clojure.data.json :as json]))
 
 (defn get-username []
   (session-get :username))
@@ -44,43 +48,42 @@
               #_(build-widget :sidewidget-about-site)]))
 
 (defn page-handler [id]
-  (if-let [id (-> id parse-id db/validate-page-id)]
-    (let [pc (db/page-count)
-          posts (db/get-page-posts id)]
+  (let [id (-> id parse-id)]
+    (if-let [page (post/get-page-posts id)]
       (wrap-view-with-widgets
-       (build-widget :page id pc posts)))
-    (not-found "are you finding akarin?") ))
+       (build-widget :page-v2 page))
+      (not-found "akarin akarin"))
+    ))
 
 (defn post-handler [id]
-  (if-let [id (-> id parse-id db/validate-post-id)]
+  (if-let [post (-> id parse-id post/get-post)]
     (wrap-view-with-widgets
-     (build-widget :post
-      (db/get-post id)))
-    (not-found "akarin? who is akarin?")))
+     (build-widget :post post))
+    (not-found "akarin kawai")))
 
 (defn post-new-handler []
   (if-let [username (session-get :username)]
-    (let [id (db/new-post username)]
+    (let [id (post/new-post username)]
       (redirect (str "/posts/" id "/edit")))
     (redirect "/login" "/posts/new")))
 
 (defn post-edit-handler [id]
-  (if-let [id (-> id parse-id db/validate-post-id)]
+  (if-let [post (-> id parse-id post/get-post)]
     (if-let [username (get-username)]
       (wrap-view-with-widgets
-       (build-widget :post-editor (db/get-post id)))
+       (build-widget :post-editor post))
       (redirect "/login")))
   )
 
 (defn post-update-handler [id title content tags as publish]
-  (if-let [username (get-username)]
-    (if-let [id (db/validate-post-id (. Integer parseInt id))]
-      (let [publish (= publish "true")
-            args (into {} (filter (comp not nil? val) {:id id :title title :author {:as as} :content content :tags tags :status {:draft (not publish)}}))
-            writeresult (db/update-post args)]
-        (println args)
-        (wrap-view-with-widgets [:div writeresult]))
-      (route/not-found ""))))
+  (let [id (-> id parse-id)
+        publish (= publish "true")
+        args (into {} (filter (comp not nil? val) {:id id :title title :author {:as as} :content content :tags tags :status {:draft (not publish)}}))]
+    (if-let [write-result (post/update-post args)]
+      (do
+        (prn write-result)
+        (wrap-view-with-widgets [:div write-result]))
+      (route/not-found "where is that post?"))))
 
 (map (comp nil? val) {:a nil})
 
@@ -91,7 +94,7 @@
     (wrap-view "already logged in")))
 
 (defn session-new-handler [username password]
-  (if-let [user (db/auth-user username password)]
+  (if-let [user (user/auth-user username password)]
     (do
       (session-put! :username (:username user))
       (redirect-back "/"))
@@ -105,9 +108,9 @@
     (wrap-view "already logged in")))
 
 (defn user-new-handler [username password rkey email]
-  (if (db/validate-rkey? rkey)
+  (if (user/validate-rkey? rkey)
     (do
-      (db/add-user username password email)
+      (user/add-user username password email)
       (wrap-view "registered")
       )
     (wrap-view "register key is not valid"))
@@ -115,8 +118,22 @@
 
 (defn post-drafts-handler []
   (if-not (nil? (session-get :username))
-    (wrap-view-with-widgets (build-widget :posts (db/get-drafts)))
+    (wrap-view-with-widgets (build-widget :page-v2 (post/get-drafts)))
     (redirect "/")) )
+
+(defn file-updaload-handler [params]
+  (if-not (nil? (session-get :username))
+    (let [file (-> params :file :tempfile)
+          ext (-> params
+                  (:file)
+                  (:filename)
+                  (clojure.string/split #"\.")
+                  (last))
+          savename (str (util/rand-id (session-get :username)) "." ext)
+          save (io/file config/image-storage-path savename)]
+      (io/copy file save)
+      (json/write-str {"filename" (str "/images/" savename)}))
+    ))
 
 (defroutes app-routes
   (GET "/" [] (page-handler 1) )
@@ -146,6 +163,9 @@
 
   (POST "/posts/:id" [id title content tags as publish]
         (post-update-handler id title content tags as publish))
+
+  (POST "/upload" [file :as {params :params}]
+        (file-updaload-handler params))
 
   (route/resources "/")
   (route/not-found "Not Found"))

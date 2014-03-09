@@ -1,8 +1,9 @@
 (ns clog.util
-  (:require [clojure.data.json :as json])
-  (:use clostache.parser
-        clj-time.format
-        clj-time.coerce))
+  (:require [clojure.data.json :as json]
+            [clj-time.core :as time]
+            [clj-time.coerce :as timec]
+            [clj-time.format :as timef]
+            [digest]))
 
 (defn link-to [text & args]
   [:a {:href (apply str args)} text])
@@ -38,8 +39,8 @@
   (apply deep-merge-with (fn [_ x] x) maps))
 
 (defn format-time [time-long]
-  (let [time-format (formatter "MMM dd,yyyy hh:mm")]
-    (unparse time-format (from-long time-long))))
+  (let [time-format (timef/formatter "MMM dd,yyyy hh:mm")]
+    (timef/unparse time-format (timec/from-long time-long))))
 
 (defn wrap-ul [& items]
   [:ul
@@ -48,4 +49,7 @@
 (defn js-call [func & args]
   (str func "(" args ")"))
 
-(js-call "a" {1 1})
+(defn time-now [] (timec/to-long (time/now)))
+
+(defn rand-id [username]
+  (digest/md5 (str username (time-now))))

@@ -42,7 +42,9 @@
                   "/js/clog.js"
                   "/js/clog-editor.js"
                   "/js/react.js"
-                  "/js/JSXTransformer.js")
+                  "/js/JSXTransformer.js"
+                  "/js/inline-attach.js"
+                  "/js/codemirror.inline-attach.js")
 ;;     [:script {:src "/js/codemirror.js"}]
 ;;     [:script {:src "/js/mode/markdown/markdown.js"}]
 ;;     [:script {:src "/js/jquery.js"}]

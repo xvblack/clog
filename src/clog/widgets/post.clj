@@ -91,3 +91,15 @@
    (build-widget :publish-check post)
    [:button {:onclick "savePost(this)"} "Save"][:span {:class "post-post"}]]
   #_[:div {:data-id (str (:id post)) :class "post post-react-editor"}])
+
+(def-widget :page-v2 [page]
+  :body
+  [:div
+   (build-widget :posts (:posts page) )
+   [:div {:class "pager"}
+    (let [id (:id page)]
+      (list
+       (if (:prev page) [:a {:href (str "/page/" (- id 1))} "Prev"])
+       (if (:next page) [:a {:href (str "/page/" (+ id 1))} "Next"])))]
+   ]
+  )

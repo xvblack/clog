@@ -1,23 +1,23 @@
-(ns clog.database
+(ns clog.model.post
   (:refer-clojure :exclude [sort find compare])
   (:require [monger.core :as mg]
             [monger.collection :as coll]
-            [clj-time.core :as time]
-            [clj-time.coerce :as timec]
-            [digest]
             [clog.config :as config])
   (:use monger.query
         monger.operators
-        clog.util)
+        clog.util
+        clog.model.util)
   (:import [com.mongodb MongoOptions ServerAddress]
            [org.bson.types ObjectId]
            [com.mongodb DB WriteConcern]
            [org.mindrot.jbcrypt BCrypt]))
 
-(mg/connect-via-uri! (str "mongodb://" (:username config/db-config) ":" (:password config/db-config) "@troup.mongohq.com:10001/Clog"))
-
 (defn- post-count []
-  (coll/count "posts") )
+  (coll/count "posts"))
+
+
+(defn- page-count [& [pp]]
+  (+ (quot (post-count) (if (nil? pp) 10 pp) ) 1) )
 
 (declare insert-post)
 
@@ -36,15 +36,13 @@
 (defn get-posts [param]
   (coll/find-maps "posts" param))
 
-(defn get-drafts []
-  (get-posts {:status {:draft true}}))
-
 (defn- update [coll fp up]
   (let [to-$set (fn to-$set [attr-map]
                   (reduce (fn [new-attr-map [k v]] (if (map? v)
                                         (map #(assoc new-attr-map (keyword (str (name k) "." (name (first %)))) (second %)) (to-$set v))
                                         (assoc new-attr-map k v)))))])
   )
+
 (defn to-$set [attr-map]
   (reduce (fn [new-attr-map [k v]] (if (map? v)
                                      (let [v (to-$set v)]
@@ -68,80 +66,38 @@
 (defn draft-post [id]
   (update-post {:id id :status {:draft true}}))
 
-(defn page-count [& pp]
-  (+ (quot (post-count) (if (nil? pp) 10 pp) ) 1) )
-
 (defn validate-post-id [id]
   (let [pc (post-count)]
     (if (and (> id 0) (<= id pc))
       id
       nil)))
 
-(defn validate-page-id [id]
-  (let [pc (post-count)]
-    (if (and (> id 0) (<= id (page-count)))
-      id
+(defn page-count [coll pp query]
+  (/ (coll/count coll query) pp))
+
+(defn get-page-posts [id & [pp]]
+  (let [pp (if (not (nil? pp)) pp 10)
+        pc (page-count "posts" pp {:status {:draft false}})
+        posts (with-collection "posts"
+                (find {:status {:draft false}})
+                (sort (array-map :time -1))
+                (paginate :page id :per_page pp))]
+    (if-not (= (count posts) 0)
+      {:id id
+       :prev (> id 1)
+       :next (< id pc)
+       :posts posts}
       nil)))
 
-(defn get-page-posts [id & pp]
-  (let [pp (if (not (nil? pp)) pp 10)]
-    (with-collection "posts"
-      (find {:status {:draft false}})
-      (sort (array-map :time -1))
-      (paginate :page id :per_page pp))
-    ))
 
-(defn check-username-exist? [username]
-  (= (coll/count "users" {:username username}) 1) )
-
-(defn add-user [username password]
-  (let [salt (BCrypt/gensalt)
-        password_hashed (BCrypt/hashpw password salt)]
-    (if (not (check-username-exist? username))
-      (coll/insert "users" {:_id (ObjectId.) :username username :password_hashed password_hashed :salt salt})
-      false)))
-
-(defn auth-user [username password]
-  (let [user (coll/find-one-as-map "users" {:username username})
-        salt (:salt user)]
-    (if (check-username-exist? username)
-      (if (= (BCrypt/hashpw password salt) (:password_hashed user))
-        user
-        false)
-      false)))
-
-(defn get-user [username]
-  (coll/find-one-as-map "users" {:username username}))
-
-(defn remove-user [username]
-  (coll/remove "users" {:username username}))
-
-(defn rand-tag []
-  (let [tt ["moew" "wow" "minamisawa" "minecraft" "solidot" "tnt" "creeper"]]
-    (into [] (filter (fn [s] (if (> (rand-int 10) 5) s)) tt)) ))
-
-(defn rand-ret [arr]
-  (fn [] (get arr (rand-int (count arr)))))
-
-(defn register-as [username as]
-  )
-
-(def rand-as (rand-ret ["saber" "king arthur" "excalibur"]))
-
-(defn rand-key []
-  (clojure.string/join (map (fn [_] (rand-nth "0123456789abcdefghijklmnopqrstuvwxyz")) (range 20))))
-
-(defn add-rkey []
-  (let [rkey (rand-key)]
-    (coll/insert "rkeys" {:_id (ObjectId.) :rkey rkey})
-    rkey))
-
-(defn validate-rkey? [rkey]
-  (if-let [rk (coll/find-one-as-map "rkeys" {:rkey rkey})]
-    (do
-      (coll/remove "rkeys" {:rkey rkey})
-      true)
-    false) )
+(defn get-drafts []
+  (let [posts (with-collection "posts"
+                (find {:status {:draft true}})
+                (sort (array-map :time -1)))]
+    {:id nil
+     :prev false
+     :next false
+     :posts posts}))
 
 ;; (coll/remove "posts" {})
 
