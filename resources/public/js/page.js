@@ -94,6 +94,8 @@
 	  				if(viewportWidth*0.6>1200)
 		  			{
 		  				// calculate the newsize of wrapper
+	  					hideRespSidebar(username);
+	  					showSideBar();
 		  				var newPadding = ((viewportWidth * 0.8) - 1200) / 2;
 		  				$("#wrapper").css({
 		  						"padding-left": newPadding,
