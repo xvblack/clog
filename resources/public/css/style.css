@@ -1,6 +1,10 @@
 /* css reset */
 html{color:#000;background:transparent;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}li{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{*font-size:100%}legend{color:#000}
 
+/* Open Sans */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+
 body{
 	background-color: #F2F2F2;
 	position: relative;
@@ -46,7 +50,7 @@ body{
 }
 .postcontent{
 	margin-top: 10px;
-	color:#454545;
+	color:#323232;
 	font-size: 15px;
 }
 #logo{
@@ -130,16 +134,20 @@ body{
 }
 
 .postcontent p{
-	line-height: 1.5em;
+	line-height: 1.75em;
 	font-size: 15px;
 	font-family: "Open Sans";
-	margin-bottom: 8px;
+	margin-bottom: 12px;
+	margin-top: 12px;
 }
-
+.postcontent strong{
+	font-weight:bold;
+	color:#222;
+}
 .postcontent em{
 	font-style: italic;
 	font-weight: 100;
-	color:#565656;
+	color:#333;
 }
 
 .postcontent ol{
@@ -258,9 +266,86 @@ body{
 	text-decoration: underline;
 }
 
+/* login view */
+
+#login-view form{
+	padding:5px 0;
+}
+
+#login-view form h2{
+
+	font-family:"Open Sans";
+	font-size:18px;
+	color:#333;
+}
+#login-view form input{
+	width:180px;
+	font-family:"Open Sans";
+	font-size:18px;
+	margin: 5px 0;
+	padding:2px;
+}
+#login-view a{
+	color: #78b437;
+	font-family:"Open Sans";
+	text-decoration: none;
+	font-size:18px;
+}
+
+#login-view a:hover{
+	text-decoration:underline;
+}
 
 
+/* editor */
+.post-editor{
+	/*font-family:"Open Sans";*/
+	padding-bottom:48px;
+}
+.post-editor .metaEditor span{
+	font-family:"Open Sans";
+}
+.post-title-editor{
+	width:60%;
+}
+.post-as-editor{
+	display:inline-block;
+	min-width:4em;
+}
+.editor-time{
+	color:#666;
+	font-style:italic;
+}
+.tagPicker ul li{
+	float:left;
+	margin-right:20px;
+	border-bottom: 1px solid #78b437;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+.tagPicker ul span{
+	display:inline-block;
+	margin-left:10px;
+	color:#444;
+	font-style:italic;
+	font-size:16px;
+}
 
+.tagPicker ul input{
+	font-size:16px;
+	font-family:"Open Sans";
+}
+.cm-editor{
+	clear:both;
+}
+.CodeMirror{
+	margin-top:15px;
+	border:1px solid #ccc;
+	clear:both;
+	margin-bottom:10px;
+}
+.post-editor button{
+}
 
 /* gradient style buttons */
 /* forked from: http://youhack.me/demo/google%20plus%20css3%20button%20style/index.html */

@@ -115,4 +115,6 @@
 				hideRespSidebar(username);
 				showRespSidebar();
 			})
+			// visul marker for editable contents
+			$("[contenteditable='true']").css("border-bottom","1px solid #78b437");
 		});

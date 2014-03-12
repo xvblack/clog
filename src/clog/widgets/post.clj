@@ -78,10 +78,10 @@
    [:a {:href (str "/posts/" (:id post))}]
    (build-widget :title-editor post)
    [:p.postmeta
-    [:div
+    [:div {:class "metaEditor"}
      (build-widget :author-as-editor post)
-     " at "
-     (format-time (:time post))
+     [:span {:class "editor-time"} " at " (format-time (:time post)) ]
+     [:br ]
      [:span "tags:"]
      #_[:span (->> post :tags (join " "))]
      [:div {:class "picker"}] ;; should be replace by react-widget
@@ -89,7 +89,8 @@
     ]
    [:textarea {:class "cm-editor"} (:content post)]
    (build-widget :publish-check post)
-   [:button {:onclick "savePost(this)"} "Save"][:span {:class "post-post"}]]
+   [:br ]
+   [:button {:onclick "savePost(this)" :class "bluebtn"} "Save"][:span {:class "post-post"}]]
   #_[:div {:data-id (str (:id post)) :class "post post-react-editor"}])
 
 (def-widget :page-v2 [page]

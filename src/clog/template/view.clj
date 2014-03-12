@@ -11,10 +11,11 @@
 (defn login-view []
   [:div {:id "login-view"}
    [:form {:action "session/new" :method "post" :onsubmit "return secureSubmit(this)"}
-    [:h2 "username"]
+    [:h2 "Username:"]
     [:input {:type "text" :name "username"}]
-    [:h2 "password"]
+    [:h2 "Password:"]
     [:input {:type "password" :name "password"}]
+    [:br ]
     [:input {:type "submit" :value "login"}]]])
 
 (defn user-info-view [username]
@@ -71,7 +72,7 @@
         username (:username author)
         as (:as author)]
     [:span
-     [:span username]
+     username
      " as "
      [:span {:contenteditable "true" :class "post-as-editor"} as]])
   )
@@ -81,7 +82,7 @@
    (link-to-view-post (:id post))
    (title-editor post)
    [:p.postmeta
-      [:div
+      [:div {:class "metaEditor"}
        (author-as-editor post)
        " at "
        (format-time (:time post))
@@ -91,5 +92,5 @@
        ]
       ]
    [:textarea {:id "cm-editor"} (:content post)]
-   [:button {:onclick "savePost(this)"} "Save"][:span {:id "post-post"}] ]
+   [:button {:class "bluebtn" }{:onclick "savePost(this)"} "Save"][:span {:id "post-post"}] ]
   #_[:div {:data-id (str (:id post)) :class "post post-react-editor"}])
