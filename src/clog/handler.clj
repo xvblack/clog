@@ -3,7 +3,6 @@
         ring.middleware.cookies
         [clojure.string :only [join]]
         sandbar.stateful-session
-        clog.template.view
         clog.util.stateful-request
         clog.wrap-view
         clog.util.widget
@@ -174,4 +173,5 @@
   (-> (handler/site app-routes)
       stateful/wrap-username
       wrap-stateful-request
-      wrap-stateful-session))
+      wrap-stateful-session
+      ))

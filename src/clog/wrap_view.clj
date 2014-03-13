@@ -2,8 +2,7 @@
   (:require [hiccup.page :as page]
             [clojure.data.json :as json]
             [clog.database :as db])
-  (:use markdown.core
-        clog.config
+  (:use clog.config
         clog.util
         clog.util.stateful-request
         clog.util.widget

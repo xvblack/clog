@@ -53,3 +53,6 @@
 
 (defn rand-id [username]
   (digest/md5 (str username (time-now))))
+
+(defn md-to-html [s]
+  (. (org.pegdown.PegDownProcessor.) markdownToHtml s))
