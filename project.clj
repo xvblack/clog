@@ -17,7 +17,8 @@
                  [sablono "0.2.6"]
                  [org.clojure/data.json "0.2.4"]
                  [de.ubercode.clostache/clostache "1.3.1"]
-                 [org.pegdown/pegdown "1.4.2"]]
+                 [org.pegdown/pegdown "1.4.2"]
+                 [com.datomic/datomic-pro "0.9.4609"]]
   :plugins [[lein-ring "0.8.10"]
             [lein-cljsbuild "1.0.2"]]
   :ring {:handler clog.handler/app}

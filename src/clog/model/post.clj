@@ -15,9 +15,57 @@
 (defn- post-count []
   (coll/count "posts"))
 
+(defn post-tags []
+  (coll/distinct "posts" :tags))
 
-(defn- page-count [& [pp]]
-  (+ (quot (post-count) (if (nil? pp) 10 pp) ) 1) )
+(defmacro defscope [name parameter & body]
+  `(defn ~name [query# ~@parameter] (merge query# (-> {} ~@body))))
+
+(defmacro build-query [& body]
+  `(-> (empty-query (.getCollection mg/*mongodb-database* "posts")) ~@body))
+
+(defn append-meta [q m]
+  (let [old-meta (meta q)
+        new-meta (merge old-meta {:data m})]
+    (with-meta q new-meta)))
+
+(defn- exec-with-meta [q]
+  (let [meta (meta q)]
+    (with-meta (exec q) meta)))
+
+(defn save-count [q]
+  (prn q)
+  (let [count (coll/count (:collection q) (:query q))]
+    q))
+
+(defscope page [id]
+  #_(save-count)
+  (paginate :page id :per_page 10))
+
+
+
+(meta (exec-with-meta
+ (build-query
+  (prn)
+  (find {:status {:draft false}})
+  (append-meta {:a :b})
+  (page 1))))
+
+(def t (build-query
+ (find {:status {:draft false}})
+ (append-meta {:a :b})
+ ))
+
+(page t 1)
+
+
+(defscope published []
+  (find {:status {:draft false}}))
+
+(defscope draft []
+  (find {:status {:draft true}}))
+
+
 
 (declare insert-post)
 
@@ -33,7 +81,7 @@
 (defn get-post [id]
   (coll/find-one-as-map "posts" {:id id}))
 
-(defn get-posts [param]
+(defn- get-posts [param]
   (coll/find-maps "posts" param))
 
 (defn- update [coll fp up]
@@ -42,13 +90,6 @@
                                         (map #(assoc new-attr-map (keyword (str (name k) "." (name (first %)))) (second %)) (to-$set v))
                                         (assoc new-attr-map k v)))))])
   )
-
-(defn to-$set [attr-map]
-  (reduce (fn [new-attr-map [k v]] (if (map? v)
-                                     (let [v (to-$set v)]
-                                       (reduce (fn [new-attr-map [kk vv]] (assoc new-attr-map (keyword (str (name k) "." (name kk))) vv))
-                                            new-attr-map v))
-                                     (assoc new-attr-map k v))) {} attr-map))
 
 ;; (defn update-post [post]
 ;;   (let [ori (coll/find-one-as-map "posts" {:id (:id post)})
@@ -66,20 +107,14 @@
 (defn draft-post [id]
   (update-post {:id id :status {:draft true}}))
 
-(defn validate-post-id [id]
-  (let [pc (post-count)]
-    (if (and (> id 0) (<= id pc))
-      id
-      nil)))
-
-(defn page-count [coll pp query]
+(defn- page-count [coll pp query]
   (/ (coll/count coll query) pp))
 
 (defn get-page-posts [id & [pp]]
   (let [pp (if (not (nil? pp)) pp 10)
         pc (page-count "posts" pp {:status {:draft false}})
         posts (with-collection "posts"
-                (find {:status {:draft false}})
+                (published)
                 (sort (array-map :time -1))
                 (paginate :page id :per_page pp))]
     (if-not (= (count posts) 0)
@@ -89,10 +124,14 @@
        :posts posts}
       nil)))
 
+(defmacro return-page [id & body]
+
+  )
+
 
 (defn get-drafts []
   (let [posts (with-collection "posts"
-                (find {:status {:draft true}})
+                (draft)
                 (sort (array-map :time -1)))]
     {:id nil
      :prev false
@@ -122,7 +161,12 @@
 
 ;; (update-post {:id 108 :title "post 99" :content "post 99 is here aaa"})
 
+(defn tap [x]
+  (prn x)
+  x)
+
 (with-collection "posts"
   (find {})
   (sort {:time -1} )
-  (paginate :page 1 :per_page 10))
+  (paginate :page 1 :per_page 10)
+  (tap))

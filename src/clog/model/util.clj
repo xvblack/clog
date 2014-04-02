@@ -32,3 +32,11 @@
   )
 
 (def rand-as (rand-ret ["saber" "king arthur" "excalibur"]))
+
+(defn to-$set [attr-map]
+  (reduce (fn [new-attr-map [k v]] (if (map? v)
+                                     (let [v (to-$set v)]
+                                       (reduce (fn [new-attr-map [kk vv]] (assoc new-attr-map (keyword (str (name k) "." (name kk))) vv))
+                                            new-attr-map v))
+                                     (assoc new-attr-map k v))) {} attr-map))
+
