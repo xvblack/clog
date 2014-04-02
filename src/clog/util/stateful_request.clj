@@ -13,3 +13,9 @@
 
 (defn request-get [k]
   (-> @request-state k))
+
+(defn debugger [handler]
+  (fn [request]
+    (let [r (handler request)]
+      (prn request-state)
+      r)))

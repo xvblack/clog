@@ -1,8 +1,7 @@
 (ns clog.widgets.post
   (:use clog.util.widget
         clog.util.stateful-request
-        clog.util
-        markdown.core)
+        clog.util)
   (:require [clog.database :as db]
             [clojure.data.json :as json]))
 
@@ -23,7 +22,7 @@
                       (clojure.string/join " " (:tags post))
                       " ")]
     [:div.postcontent.font-hei
-     (md-to-html-string (:content post))]]
+     (md-to-html (:content post))]]
    [:div.post-actions
     (wrap-ul
      (if-not (nil? (request-get :username))

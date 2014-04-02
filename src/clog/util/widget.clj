@@ -31,6 +31,7 @@
   [wn & params]
   (if (nil? (request-get :_widgets)) (request-put :_widgets (atom {})))
   (let [a (request-get :_widgets)]
+    ;; (prn a)
     (swap! a merge {wn (if-not (nil? (wn @a))
                          (inc (wn @a))
                          0)})
