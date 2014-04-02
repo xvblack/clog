@@ -13,8 +13,8 @@
 			$("#sidebar").css("display","none");
 			$("#onlyButton").css("display","inline-block");
   			$("#wrapper").css({
-  				"width": "80%",
-				"padding": "0px 10% 0px 10%"
+  				"width": "94%",
+				"padding": "0px 3% 0px 3%"
   			});
 		}
 		function showRespSidebar()
@@ -24,11 +24,11 @@
   				"position":"fixed",
   				"top":"0",
   				"z-index":"1",
-  				"width":"80%",
-  				"padding":"0 10% 0 10%",
+  				"width":"90%",
+  				"padding":"0 5% 0 5%",
   				"height":"100%"
   			});
-  			$("#userActions .username").append("<a style='font-size:22px;text-decoration:none;' href='javascript:hideRespSidebar()'> (Back to contents)</a>")
+  			$("#userActions").append("<p id='menuHide'><a href='javascript:hideRespSidebar()'> Back to contents</a></p>");
   		
 		}
 		function hideRespSidebar()
@@ -50,7 +50,7 @@
 			{
 				hideSideBar();
 			}
-  			$("#userActions .username").html(username);
+  			$("#menuHide").remove();
 
 		}
 

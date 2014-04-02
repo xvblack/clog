@@ -1,9 +1,11 @@
-/* css reset */
-html{color:#000;background:transparent;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}li{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{*font-size:100%}legend{color:#000}
 
 /* Open Sans */
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700);
+
+/* css reset */
+html{color:#000;background:transparent;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}li{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{*font-size:100%}legend{color:#000}
+
 
 body{
 	background-color: #F2F2F2;
@@ -35,11 +37,11 @@ body{
 	padding:24px;
 }
 .posttitle{
-	color:#333;
+	color:#2c2c2c;
 	font-family: "Open Sans";
-	font-weight: 400;
-	font-size:26px;
-	text-shadow: 1px 0 1px #d9d9d9;
+	font-weight: bold;
+	font-size:28px;
+	text-shadow: 1px 0 1px #c3c3c3;
 }
 .postmeta{
 	color:#777;
@@ -56,7 +58,7 @@ body{
 #logo{
 	background-image: url('/img/logo.png');
 	display: inline-block;
-	width:257px;
+	width:245px;
 	height:78px;
 }
 
@@ -71,6 +73,7 @@ body{
 #footer{
 	margin-top:20px;
 	border-top:1px solid #CCC;
+	padding-bottom: 20px;
 }
 #footer p{
 	margin-top:6px;
@@ -97,30 +100,30 @@ body{
 
 .postcontent h1{
 	font-size:24px;
-	font-weight: 400;
-	color:#333;
+	font-weight: bold;
+	color:#363636;
 	font-family: "Open Sans";
 	margin-top: 12px;
 	margin-bottom:12px;
 }
 .postcontent h2{
 	font-size:22px;
-	font-weight: 400;
-	color:#333;
+	font-weight: bold;
+	color:#373737;
 	margin-top: 12px;
 	margin-bottom:12px;
 }
 .postcontent h3{
 	font-size:20px;
-	font-weight: 400;
-	color:#333;
+	font-weight: bold;
+	color:#383838;
 	margin-top: 12px;
 	margin-bottom:12px;
 }
 .postcontent h4{
 	font-size:18px;
-	font-weight: 400;
-	color:#333;
+	font-weight: bold;
+	color:#393939;
 	margin-top: 12px;
 	margin-bottom:12px;
 }
@@ -146,7 +149,7 @@ body{
 }
 .postcontent em{
 	font-style: italic;
-	font-weight: 100;
+	font-weight: normal;
 	color:#333;
 }
 
@@ -171,7 +174,7 @@ body{
 
 .postcontent pre{
 	max-width: 100%;
-	overflow-x:scroll;
+	overflow-x:auto;
 	font-size: 13px;
 }
 .postcontent code{

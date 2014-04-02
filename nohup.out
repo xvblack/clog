@@ -1,0 +1,1088 @@
+Retrieving org/clojure/clojure/1.6.0-beta2/clojure-1.6.0-beta2.pom from central
+2014-03-03 10:30:54.141:INFO:oejs.Server:jetty-7.6.8.v20121106
+2014-03-03 10:30:54.180:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:3000
+Started server on port 3000
+Exception in thread "main" java.awt.HeadlessException: 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:546)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at java.awt.Frame.<init>(Frame.java:384)
+	at javax.swing.JFrame.<init>(JFrame.java:174)
+	at clojure.java.browse_ui$open_url_in_swing.invoke(browse_ui.clj:20)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at clojure.java.browse$open_url_in_swing.invoke(browse.clj:44)
+	at clojure.java.browse$browse_url.invoke(browse.clj:52)
+	at ring.server.standalone$open_browser_to.invoke(standalone.clj:39)
+	at ring.server.standalone$serve$fn__1857.invoke(standalone.clj:104)
+	at ring.server.standalone$try_port.invoke(standalone.clj:16)
+	at ring.server.standalone$serve.doInvoke(standalone.clj:97)
+	at clojure.lang.RestFn.invoke(RestFn.java:423)
+	at ring.server.leiningen$serve.invoke(leiningen.clj:20)
+	at user$eval5941.invoke(form-init6443602895330353887.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+{:id 101, :title Post added, :author {:as }, :content A new post
+
+  * aaa
+  * bbb
+  * ccc, :status {:draft false}}
+Mar 5, 2014 10:46:31 AM com.mongodb.DBPortPool gotError
+WARNING: emptying DBPortPool to troup.mongohq.com/50.17.141.157:10001 b/c of error
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:185)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:275)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+	at org.bson.io.Bits.readFully(Bits.java:46)
+	at org.bson.io.Bits.readFully(Bits.java:33)
+	at org.bson.io.Bits.readFully(Bits.java:28)
+	at com.mongodb.Response.<init>(Response.java:40)
+	at com.mongodb.DBPort.go(DBPort.java:142)
+	at com.mongodb.DBPort.call(DBPort.java:92)
+	at com.mongodb.DBTCPConnector.innerCall(DBTCPConnector.java:244)
+	at com.mongodb.DBTCPConnector.call(DBTCPConnector.java:216)
+	at com.mongodb.DBApiLayer$MyCollection.__find(DBApiLayer.java:288)
+	at com.mongodb.DB.command(DB.java:262)
+	at com.mongodb.DB.command(DB.java:244)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:985)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:956)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:931)
+	at com.mongodb.DBCollection.count(DBCollection.java:868)
+	at monger.collection$count.invokePrim(collection.clj:321)
+	at clog.database$post_count.invoke(database.clj:22)
+	at clog.database$validate_page_id.invoke(database.clj:83)
+	at clog.handler$page_handler.invoke(handler.clj:47)
+	at clog.handler$fn__6124.invoke(handler.clj:122)
+	at compojure.core$make_route$fn__1475.invoke(core.clj:94)
+	at compojure.core$if_route$fn__1459.invoke(core.clj:40)
+	at compojure.core$if_method$fn__1452.invoke(core.clj:25)
+	at compojure.core$routing$fn__1481.invoke(core.clj:107)
+	at clojure.core$some.invoke(core.clj:2443)
+	at compojure.core$routing.doInvoke(core.clj:107)
+	at clojure.lang.RestFn.applyTo(RestFn.java:139)
+	at clojure.core$apply.invoke(core.clj:619)
+	at compojure.core$routes$fn__1485.invoke(core.clj:112)
+	at ring.middleware.keyword_params$wrap_keyword_params$fn__5656.invoke(keyword_params.clj:32)
+	at ring.middleware.nested_params$wrap_nested_params$fn__5705.invoke(nested_params.clj:70)
+	at ring.middleware.params$wrap_params$fn__1747.invoke(params.clj:58)
+	at ring.middleware.multipart_params$wrap_multipart_params$fn__5749.invoke(multipart_params.clj:107)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clog.util.stateful_loader$wrap_username$fn__5877.invoke(stateful_loader.clj:8)
+	at clog.util.stateful_request$wrap_stateful_request$fn__5406.invoke(stateful_request.clj:9)
+	at sandbar.stateful_session$wrap_stateful_session_STAR_$fn__3243.invoke(stateful_session.clj:65)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at ring.middleware.reload$wrap_reload$fn__1142.invoke(reload.clj:18)
+	at ring.middleware.stacktrace$wrap_stacktrace_log$fn__895.invoke(stacktrace.clj:17)
+	at ring.middleware.stacktrace$wrap_stacktrace_web$fn__957.invoke(stacktrace.clj:80)
+	at ring.adapter.jetty$proxy_handler$fn__96.invoke(jetty.clj:18)
+	at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:363)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:483)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:920)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:982)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:635)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:701)
+com.mongodb.MongoException$Network: Read operation to server troup.mongohq.com/50.17.141.157:10001 failed on database Clog
+                     DBTCPConnector.java:253 com.mongodb.DBTCPConnector.innerCall
+                     DBTCPConnector.java:216 com.mongodb.DBTCPConnector.call
+                         DBApiLayer.java:288 com.mongodb.DBApiLayer$MyCollection.__find
+                                 DB.java:262 com.mongodb.DB.command
+                                 DB.java:244 com.mongodb.DB.command
+                       DBCollection.java:985 com.mongodb.DBCollection.getCount
+                       DBCollection.java:956 com.mongodb.DBCollection.getCount
+                       DBCollection.java:931 com.mongodb.DBCollection.getCount
+                       DBCollection.java:868 com.mongodb.DBCollection.count
+                          collection.clj:321 monger.collection/count
+                             database.clj:22 clog.database/post-count
+                             database.clj:83 clog.database/validate-page-id
+                              handler.clj:47 clog.handler/page-handler
+                             handler.clj:122 clog.handler/fn
+                                 core.clj:94 compojure.core/make-route[fn]
+                                 core.clj:40 compojure.core/if-route[fn]
+                                 core.clj:25 compojure.core/if-method[fn]
+                                core.clj:107 compojure.core/routing[fn]
+                               core.clj:2443 clojure.core/some
+                                core.clj:107 compojure.core/routing
+                             RestFn.java:139 clojure.lang.RestFn.applyTo
+                                core.clj:619 clojure.core/apply
+                                core.clj:112 compojure.core/routes[fn]
+                       keyword_params.clj:32 ring.middleware.keyword-params/wrap-keyword-params[fn]
+                        nested_params.clj:70 ring.middleware.nested-params/wrap-nested-params[fn]
+                               params.clj:58 ring.middleware.params/wrap-params[fn]
+                    multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                                flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                              session.clj:85 ring.middleware.session/wrap-session[fn]
+                       stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                      stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                     stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                                flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                              session.clj:85 ring.middleware.session/wrap-session[fn]
+                                Var.java:415 clojure.lang.Var.invoke
+                               reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                           stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                           stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                                jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                            (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                     HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                             Server.java:363 org.eclipse.jetty.server.Server.handle
+             AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+             AbstractHttpConnection.java:920 org.eclipse.jetty.server.AbstractHttpConnection.headerComplete
+             AbstractHttpConnection.java:982 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete
+                         HttpParser.java:635 org.eclipse.jetty.http.HttpParser.parseNext
+                         HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+                 AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+              SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+               SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                   QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                   QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                             Thread.java:701 java.lang.Thread.run
+Caused by: java.net.SocketException: Connection reset
+                  SocketInputStream.java:185 java.net.SocketInputStream.read
+                BufferedInputStream.java:235 java.io.BufferedInputStream.fill
+                BufferedInputStream.java:275 java.io.BufferedInputStream.read1
+                BufferedInputStream.java:334 java.io.BufferedInputStream.read
+                                Bits.java:46 org.bson.io.Bits.readFully
+                                Bits.java:33 org.bson.io.Bits.readFully
+                                Bits.java:28 org.bson.io.Bits.readFully
+                            Response.java:40 com.mongodb.Response.<init>
+                             DBPort.java:142 com.mongodb.DBPort.go
+                              DBPort.java:92 com.mongodb.DBPort.call
+                     DBTCPConnector.java:244 com.mongodb.DBTCPConnector.innerCall
+nil
+{:id 108, :title 郑澈的好朋友, :author {:as akarin}, :content **小测试**
+_大测试_
+
+原来郑司楚读书广博，虽不曾去过符敦城，但对符敦城周围形势知之甚详。符敦城东门外的滩涂上有鼍龙孳生，他早就知道，老师给他的那本《兵法心得》中，有一段说的正是在符敦东门外之战。那是很久以前蛇人围城之时。因为蛇人力大无穷，而且能在狭小的洞穴里钻动，因此蛇人在东门外穴地攻城。当时城中军队冒险冲出东门，将鼍龙引到蛇人阵地，以鼍龙来缠住蛇人，又往蛇人所挖洞穴中灌入燃油，点火焚烧，这才解了燃眉之急。郑司楚还记得初读此段时的惊心动魄，因此这等战法实是越出常规，前所未有。蛇人现在已经被消灭了，不过这攻城法倒可借鉴。虽然他不能与蛇人一般穴地攻城，但符敦东门实是个防守薄弱的软肋也是个不争的事实。郑司楚用的，却是用木板做了一些怪兽形状，当中暗藏金鼓，有意不掩人耳目。鼍龙虽然凶悍，毕竟只是些鳞介之属，见到有比自己更大更凶的怪物前来，自是吓得不敢靠近。而胡继棠听得禀报说东门外突然异声大作，这才明白东门居然遭到了攻击，不由大惊失色。他是百战名将，用兵神速，东门外本来防守薄弱，他当然一清二楚，所以听得东门外出现异声异动，马上就知道定然是南军来犯，立刻加派重兵主防东门。只是，这一点正落入了郑司楚的算计。郑司楚知道，从东门进攻固然可以收到出其不意之功，可东门外毕竟是一片滩涂，不利进攻，所以这一处纯是佯攻，五羊城援军的主攻方向，却是大江上的北门。, :status {:draft false}}
+{:id 108, :title 郑澈的好朋友, :author {:as akarin}, :content **小测试**
+_大测试_
+
+原来郑司楚读书广博，虽不曾去过符敦城，但对符敦城周围形势知之甚详。符敦城东门外的滩涂上有鼍龙孳生，他早就知道，老师给他的那本《兵法心得》中，有一段说的正是在符敦东门外之战。那是很久以前蛇人围城之时。因为蛇人力大无穷，而且能在狭小的洞穴里钻动，因此蛇人在东门外穴地攻城。当时城中军队冒险冲出东门，将鼍龙引到蛇人阵地，以鼍龙来缠住蛇人，又往蛇人所挖洞穴中灌入燃油，点火焚烧，这才解了燃眉之急。郑司楚还记得初读此段时的惊心动魄，因此这等战法实是越出常规，前所未有。蛇人现在已经被消灭了，不过这攻城法倒可借鉴。虽然他不能与蛇人一般穴地攻城，但符敦东门实是个防守薄弱的软肋也是个不争的事实。郑司楚用的，却是用木板做了一些怪兽形状，当中暗藏金鼓，有意不掩人耳目。鼍龙虽然凶悍，毕竟只是些鳞介之属，见到有比自己更大更凶的怪物前来，自是吓得不敢靠近。而胡继棠听得禀报说东门外突然异声大作，这才明白东门居然遭到了攻击，不由大惊失色。他是百战名将，用兵神速，东门外本来防守薄弱，他当然一清二楚，所以听得东门外出现异声异动，马上就知道定然是南军来犯，立刻加派重兵主防东门。只是，这一点正落入了郑司楚的算计。郑司楚知道，从东门进攻固然可以收到出其不意之功，可东门外毕竟是一片滩涂，不利进攻，所以这一处纯是佯攻，五羊城援军的主攻方向，却是大江上的北门。, :status {:draft false}}
+{:id 108, :author {:as nil}, :tags [难道不能用？], :status {:draft true}}
+{:id 108, :title 标题, :author {:as akarin}, :content **小测试**
+_大测试_
+
+原来郑司楚读书广博，虽不曾去过符敦城，但对符敦城周围形势知之甚详。符敦城东门外的滩涂上有鼍龙孳生，他早就知道，老师给他的那本《兵法心得》中，有一段说的正是在符敦东门外之战。那是很久以前蛇人围城之时。因为蛇人力大无穷，而且能在狭小的洞穴里钻动，因此蛇人在东门外穴地攻城。当时城中军队冒险冲出东门，将鼍龙引到蛇人阵地，以鼍龙来缠住蛇人，又往蛇人所挖洞穴中灌入燃油，点火焚烧，这才解了燃眉之急。郑司楚还记得初读此段时的惊心动魄，因此这等战法实是越出常规，前所未有。蛇人现在已经被消灭了，不过这攻城法倒可借鉴。虽然他不能与蛇人一般穴地攻城，但符敦东门实是个防守薄弱的软肋也是个不争的事实。郑司楚用的，却是用木板做了一些怪兽形状，当中暗藏金鼓，有意不掩人耳目。鼍龙虽然凶悍，毕竟只是些鳞介之属，见到有比自己更大更凶的怪物前来，自是吓得不敢靠近。而胡继棠听得禀报说东门外突然异声大作，这才明白东门居然遭到了攻击，不由大惊失色。他是百战名将，用兵神速，东门外本来防守薄弱，他当然一清二楚，所以听得东门外出现异声异动，马上就知道定然是南军来犯，立刻加派重兵主防东门。只是，这一点正落入了郑司楚的算计。郑司楚知道，从东门进攻固然可以收到出其不意之功，可东门外毕竟是一片滩涂，不利进攻，所以这一处纯是佯攻，五羊城援军的主攻方向，却是大江上的北门。, :status {:draft false}}
+{:id 100, :title post 99, :author {:as king arthur}, :content post 99
+
+bb
+
+ccc
+c
+e
+
+    int a,b;
+    char *c,d,e,f;
+    
+    std::string name(c);
+
+
+俗话说的好 学得好不如嫁的好
+
+刘宇轩就是一个活生生的例子。
+
+去年买了个表…………, :status {:draft false}}
+{:id 108, :author {:as nil}, :tags [难道不能用？ 能用吧], :status {:draft true}}
+{:id 108, :author {:as nil}, :tags [难道不能用？ 能用吧 真夏夜的淫梦], :status {:draft true}}
+{:id 108, :title 标题, :author {:as akarin}, :content **小测试**
+
+
+_大测试_
+
+原来郑司楚读书广博，虽不曾去过符敦城，但对符敦城周围形势知之甚详。符敦城东门外的滩涂上有鼍龙孳生，他早就知道，老师给他的那本《兵法心得》中，有一段说的正是在符敦东门外之战。那是很久以前蛇人围城之时。因为蛇人力大无穷，而且能在狭小的洞穴里钻动，因此蛇人在东门外穴地攻城。当时城中军队冒险冲出东门，将鼍龙引到蛇人阵地，以鼍龙来缠住蛇人，又往蛇人所挖洞穴中灌入燃油，点火焚烧，这才解了燃眉之急。郑司楚还记得初读此段时的惊心动魄，因此这等战法实是越出常规，前所未有。蛇人现在已经被消灭了，不过这攻城法倒可借鉴。虽然他不能与蛇人一般穴地攻城，但符敦东门实是个防守薄弱的软肋也是个不争的事实。郑司楚用的，却是用木板做了一些怪兽形状，当中暗藏金鼓，有意不掩人耳目。鼍龙虽然凶悍，毕竟只是些鳞介之属，见到有比自己更大更凶的怪物前来，自是吓得不敢靠近。而胡继棠听得禀报说东门外突然异声大作，这才明白东门居然遭到了攻击，不由大惊失色。他是百战名将，用兵神速，东门外本来防守薄弱，他当然一清二楚，所以听得东门外出现异声异动，马上就知道定然是南军来犯，立刻加派重兵主防东门。只是，这一点正落入了郑司楚的算计。郑司楚知道，从东门进攻固然可以收到出其不意之功，可东门外毕竟是一片滩涂，不利进攻，所以这一处纯是佯攻，五羊城援军的主攻方向，却是大江上的北门。, :status {:draft false}}
+{:id 101, :title Post added, :author {:as }, :content A new post
+
+  * aaa
+  * bbb
+  * ccc
+  
+TEST, :status {:draft false}}
+nil
+{:id 108, :title 郑昭儿子的故事, :author {:as akarin}, :content **小测试**
+
+
+_大测试_
+
+原来郑司楚读书广博，虽不曾去过符敦城，但对符敦城周围形势知之甚详。符敦城东门外的滩涂上有鼍龙孳生，他早就知道，老师给他的那本《兵法心得》中，有一段说的正是在符敦东门外之战。那是很久以前蛇人围城之时。因为蛇人力大无穷，而且能在狭小的洞穴里钻动，因此蛇人在东门外穴地攻城。当时城中军队冒险冲出东门，将鼍龙引到蛇人阵地，以鼍龙来缠住蛇人，又往蛇人所挖洞穴中灌入燃油，点火焚烧，这才解了燃眉之急。郑司楚还记得初读此段时的惊心动魄，因此这等战法实是越出常规，前所未有。蛇人现在已经被消灭了，不过这攻城法倒可借鉴。虽然他不能与蛇人一般穴地攻城，但符敦东门实是个防守薄弱的软肋也是个不争的事实。郑司楚用的，却是用木板做了一些怪兽形状，当中暗藏金鼓，有意不掩人耳目。鼍龙虽然凶悍，毕竟只是些鳞介之属，见到有比自己更大更凶的怪物前来，自是吓得不敢靠近。而胡继棠听得禀报说东门外突然异声大作，这才明白东门居然遭到了攻击，不由大惊失色。他是百战名将，用兵神速，东门外本来防守薄弱，他当然一清二楚，所以听得东门外出现异声异动，马上就知道定然是南军来犯，立刻加派重兵主防东门。只是，这一点正落入了郑司楚的算计。郑司楚知道，从东门进攻固然可以收到出其不意之功，可东门外毕竟是一片滩涂，不利进攻，所以这一处纯是佯攻，五羊城援军的主攻方向，却是大江上的北门。, :status {:draft false}}
+java.lang.NullPointerException: null
+    ConcurrentHashMap.java:917 java.util.concurrent.ConcurrentHashMap.get
+                Mongo.java:353 com.mongodb.Mongo.getDB
+                  core.clj:232 monger.core/connect-via-uri!
+                   util.clj:21 clog.model.util/eval6945
+            Compiler.java:6619 clojure.lang.Compiler.eval
+            Compiler.java:7064 clojure.lang.Compiler.load
+                   RT.java:370 clojure.lang.RT.loadResourceScript
+                   RT.java:361 clojure.lang.RT.loadResourceScript
+                   RT.java:440 clojure.lang.RT.load
+                   RT.java:411 clojure.lang.RT.load
+                 core.clj:5530 clojure.core/load[fn]
+                 core.clj:5529 clojure.core/load
+               RestFn.java:408 clojure.lang.RestFn.invoke
+                 core.clj:5336 clojure.core/load-one
+                 core.clj:5375 clojure.core/load-lib[fn]
+                 core.clj:5374 clojure.core/load-lib
+               RestFn.java:142 clojure.lang.RestFn.applyTo
+                  core.clj:619 clojure.core/apply
+                 core.clj:5413 clojure.core/load-libs
+               RestFn.java:137 clojure.lang.RestFn.applyTo
+                  core.clj:621 clojure.core/apply
+                 core.clj:5507 clojure.core/use
+               RestFn.java:457 clojure.lang.RestFn.invoke
+                    post.clj:1 clog.model.post/eval6931[fn]
+                    post.clj:1 clog.model.post/eval6931
+            Compiler.java:6619 clojure.lang.Compiler.eval
+            Compiler.java:6608 clojure.lang.Compiler.eval
+            Compiler.java:7064 clojure.lang.Compiler.load
+                   RT.java:370 clojure.lang.RT.loadResourceScript
+                   RT.java:361 clojure.lang.RT.loadResourceScript
+                   RT.java:440 clojure.lang.RT.load
+                   RT.java:411 clojure.lang.RT.load
+                 core.clj:5530 clojure.core/load[fn]
+                 core.clj:5529 clojure.core/load
+               RestFn.java:408 clojure.lang.RestFn.invoke
+                 core.clj:5336 clojure.core/load-one
+                 core.clj:5375 clojure.core/load-lib[fn]
+                 core.clj:5374 clojure.core/load-lib
+               RestFn.java:142 clojure.lang.RestFn.applyTo
+                  core.clj:619 clojure.core/apply
+                 core.clj:5413 clojure.core/load-libs
+               RestFn.java:137 clojure.lang.RestFn.applyTo
+                  core.clj:619 clojure.core/apply
+                 core.clj:5496 clojure.core/require
+               RestFn.java:805 clojure.lang.RestFn.invoke
+                 handler.clj:1 clog.handler/eval6925[fn]
+                 handler.clj:1 clog.handler/eval6925
+            Compiler.java:6619 clojure.lang.Compiler.eval
+            Compiler.java:6608 clojure.lang.Compiler.eval
+            Compiler.java:7064 clojure.lang.Compiler.load
+                   RT.java:370 clojure.lang.RT.loadResourceScript
+                   RT.java:361 clojure.lang.RT.loadResourceScript
+                   RT.java:440 clojure.lang.RT.load
+                   RT.java:411 clojure.lang.RT.load
+                 core.clj:5530 clojure.core/load[fn]
+                 core.clj:5529 clojure.core/load
+               RestFn.java:408 clojure.lang.RestFn.invoke
+                 core.clj:5336 clojure.core/load-one
+                 core.clj:5375 clojure.core/load-lib[fn]
+                 core.clj:5374 clojure.core/load-lib
+               RestFn.java:142 clojure.lang.RestFn.applyTo
+                  core.clj:619 clojure.core/apply
+                 core.clj:5413 clojure.core/load-libs
+               RestFn.java:137 clojure.lang.RestFn.applyTo
+                  core.clj:619 clojure.core/apply
+                 core.clj:5496 clojure.core/require
+               RestFn.java:421 clojure.lang.RestFn.invoke
+                 reload.clj:17 ring.middleware.reload/wrap-reload[fn]
+             stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+             stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                  jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+              (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+       HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+               Server.java:363 org.eclipse.jetty.server.Server.handle
+AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+AbstractHttpConnection.java:920 org.eclipse.jetty.server.AbstractHttpConnection.headerComplete
+AbstractHttpConnection.java:982 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete
+           HttpParser.java:635 org.eclipse.jetty.http.HttpParser.parseNext
+           HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+   AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+ SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+     QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+     QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+               Thread.java:701 java.lang.Thread.run
+2014-03-09 14:06:00.254:INFO:oejs.Server:jetty-7.6.8.v20121106
+2014-03-09 14:06:00.295:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:3000
+Started server on port 3000
+Exception in thread "main" java.awt.HeadlessException: 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:546)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at java.awt.Frame.<init>(Frame.java:384)
+	at javax.swing.JFrame.<init>(JFrame.java:174)
+	at clojure.java.browse_ui$open_url_in_swing.invoke(browse_ui.clj:20)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at clojure.java.browse$open_url_in_swing.invoke(browse.clj:44)
+	at clojure.java.browse$browse_url.invoke(browse.clj:52)
+	at ring.server.standalone$open_browser_to.invoke(standalone.clj:39)
+	at ring.server.standalone$serve$fn__1857.invoke(standalone.clj:104)
+	at ring.server.standalone$try_port.invoke(standalone.clj:16)
+	at ring.server.standalone$serve.doInvoke(standalone.clj:97)
+	at clojure.lang.RestFn.invoke(RestFn.java:423)
+	at ring.server.leiningen$serve.invoke(leiningen.clj:20)
+	at user$eval5911.invoke(form-init4628658369997175399.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394345913 , "$inc" : 1} , "connectionId" : 22456 , "err" :  null  , "ok" : 1.0}>
+nil
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394616639 , "$inc" : 1} , "connectionId" : 22885 , "err" :  null  , "ok" : 1.0}>
+Retrieving org/clojure/clojure/1.6.0-RC1/clojure-1.6.0-RC1.pom from central
+2014-03-12 18:16:43.679:INFO:oejs.Server:jetty-7.6.8.v20121106
+2014-03-12 18:16:43.757:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:3000
+Started server on port 3000
+Exception in thread "main" java.awt.HeadlessException: 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:546)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at java.awt.Frame.<init>(Frame.java:384)
+	at javax.swing.JFrame.<init>(JFrame.java:174)
+	at clojure.java.browse_ui$open_url_in_swing.invoke(browse_ui.clj:20)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at clojure.java.browse$open_url_in_swing.invoke(browse.clj:44)
+	at clojure.java.browse$browse_url.invoke(browse.clj:52)
+	at ring.server.standalone$open_browser_to.invoke(standalone.clj:39)
+	at ring.server.standalone$serve$fn__1857.invoke(standalone.clj:104)
+	at ring.server.standalone$try_port.invoke(standalone.clj:16)
+	at ring.server.standalone$serve.doInvoke(standalone.clj:97)
+	at clojure.lang.RestFn.invoke(RestFn.java:423)
+	at ring.server.leiningen$serve.invoke(leiningen.clj:20)
+	at user$eval5911.invoke(form-init7292407161953952224.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+2014-03-12 22:10:50.801:INFO:oejs.Server:jetty-7.6.8.v20121106
+2014-03-12 22:10:50.842:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:3000
+Started server on port 3000
+Exception in thread "main" java.awt.HeadlessException: 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:173)
+	at java.awt.Window.<init>(Window.java:546)
+	at java.awt.Frame.<init>(Frame.java:419)
+	at java.awt.Frame.<init>(Frame.java:384)
+	at javax.swing.JFrame.<init>(JFrame.java:174)
+	at clojure.java.browse_ui$open_url_in_swing.invoke(browse_ui.clj:20)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at clojure.java.browse$open_url_in_swing.invoke(browse.clj:44)
+	at clojure.java.browse$browse_url.invoke(browse.clj:52)
+	at ring.server.standalone$open_browser_to.invoke(standalone.clj:39)
+	at ring.server.standalone$serve$fn__1857.invoke(standalone.clj:104)
+	at ring.server.standalone$try_port.invoke(standalone.clj:16)
+	at ring.server.standalone$serve.doInvoke(standalone.clj:97)
+	at clojure.lang.RestFn.invoke(RestFn.java:423)
+	at ring.server.leiningen$serve.invoke(leiningen.clj:20)
+	at user$eval5911.invoke(form-init6172778998970545486.clj:1)
+	at clojure.lang.Compiler.eval(Compiler.java:6619)
+	at clojure.lang.Compiler.eval(Compiler.java:6609)
+	at clojure.lang.Compiler.load(Compiler.java:7064)
+	at clojure.lang.Compiler.loadFile(Compiler.java:7020)
+	at clojure.main$load_script.invoke(main.clj:294)
+	at clojure.main$init_opt.invoke(main.clj:299)
+	at clojure.main$initialize.invoke(main.clj:327)
+	at clojure.main$null_opt.invoke(main.clj:362)
+	at clojure.main$main.doInvoke(main.clj:440)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at clojure.lang.Var.invoke(Var.java:419)
+	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+	at clojure.lang.Var.applyTo(Var.java:532)
+	at clojure.main.main(main.java:37)
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: a in this context, compiling:(clog/widgets/basic.clj:45:1)
+          Compiler.java:6380 clojure.lang.Compiler.analyze
+          Compiler.java:6322 clojure.lang.Compiler.analyze
+          Compiler.java:3024 clojure.lang.Compiler$VectorExpr.parse
+          Compiler.java:6363 clojure.lang.Compiler.analyze
+          Compiler.java:6322 clojure.lang.Compiler.analyze
+          Compiler.java:3024 clojure.lang.Compiler$VectorExpr.parse
+          Compiler.java:6363 clojure.lang.Compiler.analyze
+          Compiler.java:6322 clojure.lang.Compiler.analyze
+          Compiler.java:5708 clojure.lang.Compiler$BodyExpr$Parser.parse
+          Compiler.java:6560 clojure.lang.Compiler.analyzeSeq
+          Compiler.java:6361 clojure.lang.Compiler.analyze
+          Compiler.java:6322 clojure.lang.Compiler.analyze
+          Compiler.java:5708 clojure.lang.Compiler$BodyExpr$Parser.parse
+          Compiler.java:5139 clojure.lang.Compiler$FnMethod.parse
+          Compiler.java:3751 clojure.lang.Compiler$FnExpr.parse
+          Compiler.java:6558 clojure.lang.Compiler.analyzeSeq
+          Compiler.java:6361 clojure.lang.Compiler.analyze
+          Compiler.java:6548 clojure.lang.Compiler.analyzeSeq
+          Compiler.java:6361 clojure.lang.Compiler.analyze
+          Compiler.java:6322 clojure.lang.Compiler.analyze
+          Compiler.java:3624 clojure.lang.Compiler$InvokeExpr.parse
+          Compiler.java:6562 clojure.lang.Compiler.analyzeSeq
+          Compiler.java:6361 clojure.lang.Compiler.analyze
+          Compiler.java:6322 clojure.lang.Compiler.analyze
+          Compiler.java:5708 clojure.lang.Compiler$BodyExpr$Parser.parse
+          Compiler.java:5139 clojure.lang.Compiler$FnMethod.parse
+          Compiler.java:3751 clojure.lang.Compiler$FnExpr.parse
+          Compiler.java:6558 clojure.lang.Compiler.analyzeSeq
+          Compiler.java:6361 clojure.lang.Compiler.analyze
+          Compiler.java:6616 clojure.lang.Compiler.eval
+          Compiler.java:7064 clojure.lang.Compiler.load
+                 RT.java:370 clojure.lang.RT.loadResourceScript
+                 RT.java:361 clojure.lang.RT.loadResourceScript
+                 RT.java:440 clojure.lang.RT.load
+                 RT.java:411 clojure.lang.RT.load
+               core.clj:5530 clojure.core/load[fn]
+               core.clj:5529 clojure.core/load
+             RestFn.java:408 clojure.lang.RestFn.invoke
+               core.clj:5336 clojure.core/load-one
+               core.clj:5375 clojure.core/load-lib[fn]
+               core.clj:5374 clojure.core/load-lib
+             RestFn.java:142 clojure.lang.RestFn.applyTo
+                core.clj:619 clojure.core/apply
+               core.clj:5413 clojure.core/load-libs
+             RestFn.java:137 clojure.lang.RestFn.applyTo
+                core.clj:619 clojure.core/apply
+               core.clj:5496 clojure.core/require
+             RestFn.java:421 clojure.lang.RestFn.invoke
+               reload.clj:17 ring.middleware.reload/wrap-reload[fn]
+           stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+           stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+            (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+     HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+             Server.java:363 org.eclipse.jetty.server.Server.handle
+AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+AbstractHttpConnection.java:920 org.eclipse.jetty.server.AbstractHttpConnection.headerComplete
+AbstractHttpConnection.java:982 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete
+         HttpParser.java:635 org.eclipse.jetty.http.HttpParser.parseNext
+         HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+ AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+   QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+   QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+             Thread.java:701 java.lang.Thread.run
+Caused by: java.lang.RuntimeException: Unable to resolve symbol: a in this context
+               Util.java:219 clojure.lang.Util.runtimeException
+          Compiler.java:6874 clojure.lang.Compiler.resolveIn
+          Compiler.java:6818 clojure.lang.Compiler.resolve
+          Compiler.java:6779 clojure.lang.Compiler.analyzeSymbol
+          Compiler.java:6343 clojure.lang.Compiler.analyze
+nil
+nil
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394636846 , "$inc" : 1} , "connectionId" : 32293 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394636957 , "$inc" : 1} , "connectionId" : 32305 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394637019 , "$inc" : 1} , "connectionId" : 32293 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394637032 , "$inc" : 1} , "connectionId" : 32304 , "err" :  null  , "ok" : 1.0}>
+nil
+nil
+nil
+nil
+nil
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394638377 , "$inc" : 1} , "connectionId" : 32279 , "err" :  null  , "ok" : 1.0}>
+nil
+nil
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394639097 , "$inc" : 1} , "connectionId" : 32292 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394639174 , "$inc" : 1} , "connectionId" : 32293 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394639192 , "$inc" : 1} , "connectionId" : 32293 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394639200 , "$inc" : 1} , "connectionId" : 32292 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394639373 , "$inc" : 1} , "connectionId" : 32304 , "err" :  null  , "ok" : 1.0}>
+nil
+nil
+nil
+nil
+nil
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394640029 , "$inc" : 1} , "connectionId" : 32279 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394640646 , "$inc" : 1} , "connectionId" : 32292 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394640702 , "$inc" : 1} , "connectionId" : 32279 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394648998 , "$inc" : 1} , "connectionId" : 32599 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394649002 , "$inc" : 1} , "connectionId" : 32508 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394649194 , "$inc" : 1} , "connectionId" : 32599 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394649251 , "$inc" : 1} , "connectionId" : 32292 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394678222 , "$inc" : 1} , "connectionId" : 32292 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394678235 , "$inc" : 1} , "connectionId" : 32305 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394678337 , "$inc" : 1} , "connectionId" : 32293 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1394678432 , "$inc" : 1} , "connectionId" : 32305 , "err" :  null  , "ok" : 1.0}>
+Mar 13, 2014 4:53:37 PM com.mongodb.DBPortPool gotError
+WARNING: emptying DBPortPool to troup.mongohq.com/50.17.141.157:10001 b/c of error
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:185)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:275)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+	at org.bson.io.Bits.readFully(Bits.java:46)
+	at org.bson.io.Bits.readFully(Bits.java:33)
+	at org.bson.io.Bits.readFully(Bits.java:28)
+	at com.mongodb.Response.<init>(Response.java:40)
+	at com.mongodb.DBPort.go(DBPort.java:142)
+	at com.mongodb.DBPort.call(DBPort.java:92)
+	at com.mongodb.DBTCPConnector.innerCall(DBTCPConnector.java:244)
+	at com.mongodb.DBTCPConnector.call(DBTCPConnector.java:216)
+	at com.mongodb.DBApiLayer$MyCollection.__find(DBApiLayer.java:288)
+	at com.mongodb.DB.command(DB.java:262)
+	at com.mongodb.DB.command(DB.java:244)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:985)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:956)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:931)
+	at com.mongodb.DBCollection.count(DBCollection.java:878)
+	at monger.collection$count.invokePrim(collection.clj:323)
+	at clog.model.post$page_count.invoke(post.clj:76)
+	at clog.model.post$get_page_posts.doInvoke(post.clj:80)
+	at clojure.lang.RestFn.invoke(RestFn.java:410)
+	at clog.handler$page_handler.invoke(handler.clj:52)
+	at clog.handler$fn__9134.invoke(handler.clj:139)
+	at compojure.core$make_route$fn__1475.invoke(core.clj:94)
+	at compojure.core$if_route$fn__1459.invoke(core.clj:40)
+	at compojure.core$if_method$fn__1452.invoke(core.clj:25)
+	at compojure.core$routing$fn__1481.invoke(core.clj:107)
+	at clojure.core$some.invoke(core.clj:2443)
+	at compojure.core$routing.doInvoke(core.clj:107)
+	at clojure.lang.RestFn.applyTo(RestFn.java:139)
+	at clojure.core$apply.invoke(core.clj:619)
+	at compojure.core$routes$fn__1485.invoke(core.clj:112)
+	at ring.middleware.keyword_params$wrap_keyword_params$fn__5525.invoke(keyword_params.clj:32)
+	at ring.middleware.nested_params$wrap_nested_params$fn__5574.invoke(nested_params.clj:70)
+	at ring.middleware.params$wrap_params$fn__1747.invoke(params.clj:58)
+	at ring.middleware.multipart_params$wrap_multipart_params$fn__5618.invoke(multipart_params.clj:107)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clog.util.stateful_loader$wrap_username$fn__5746.invoke(stateful_loader.clj:8)
+	at clog.util.stateful_request$wrap_stateful_request$fn__5263.invoke(stateful_request.clj:9)
+	at sandbar.stateful_session$wrap_stateful_session_STAR_$fn__3243.invoke(stateful_session.clj:65)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at ring.middleware.reload$wrap_reload$fn__1142.invoke(reload.clj:18)
+	at ring.middleware.stacktrace$wrap_stacktrace_log$fn__895.invoke(stacktrace.clj:17)
+	at ring.middleware.stacktrace$wrap_stacktrace_web$fn__957.invoke(stacktrace.clj:80)
+	at ring.adapter.jetty$proxy_handler$fn__96.invoke(jetty.clj:18)
+	at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:363)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:483)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:920)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:982)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:635)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:701)
+com.mongodb.MongoException$Network: Read operation to server troup.mongohq.com/50.17.141.157:10001 failed on database Clog
+                      DBTCPConnector.java:253 com.mongodb.DBTCPConnector.innerCall
+                      DBTCPConnector.java:216 com.mongodb.DBTCPConnector.call
+                          DBApiLayer.java:288 com.mongodb.DBApiLayer$MyCollection.__find
+                                  DB.java:262 com.mongodb.DB.command
+                                  DB.java:244 com.mongodb.DB.command
+                        DBCollection.java:985 com.mongodb.DBCollection.getCount
+                        DBCollection.java:956 com.mongodb.DBCollection.getCount
+                        DBCollection.java:931 com.mongodb.DBCollection.getCount
+                        DBCollection.java:878 com.mongodb.DBCollection.count
+                           collection.clj:323 monger.collection/count
+                                  post.clj:76 clog.model.post/page-count
+                                  post.clj:80 clog.model.post/get-page-posts
+                              RestFn.java:410 clojure.lang.RestFn.invoke
+                               handler.clj:52 clog.handler/page-handler
+                              handler.clj:139 clog.handler/fn
+                                  core.clj:94 compojure.core/make-route[fn]
+                                  core.clj:40 compojure.core/if-route[fn]
+                                  core.clj:25 compojure.core/if-method[fn]
+                                 core.clj:107 compojure.core/routing[fn]
+                                core.clj:2443 clojure.core/some
+                                 core.clj:107 compojure.core/routing
+                              RestFn.java:139 clojure.lang.RestFn.applyTo
+                                 core.clj:619 clojure.core/apply
+                                 core.clj:112 compojure.core/routes[fn]
+                        keyword_params.clj:32 ring.middleware.keyword-params/wrap-keyword-params[fn]
+                         nested_params.clj:70 ring.middleware.nested-params/wrap-nested-params[fn]
+                                params.clj:58 ring.middleware.params/wrap-params[fn]
+                     multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                                 flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                               session.clj:85 ring.middleware.session/wrap-session[fn]
+                        stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                       stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                      stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                                 flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                               session.clj:85 ring.middleware.session/wrap-session[fn]
+                                 Var.java:415 clojure.lang.Var.invoke
+                                reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                            stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                            stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                                 jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                             (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                      HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                              Server.java:363 org.eclipse.jetty.server.Server.handle
+              AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+              AbstractHttpConnection.java:920 org.eclipse.jetty.server.AbstractHttpConnection.headerComplete
+              AbstractHttpConnection.java:982 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete
+                          HttpParser.java:635 org.eclipse.jetty.http.HttpParser.parseNext
+                          HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+                  AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+               SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+                SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                    QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                    QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                              Thread.java:701 java.lang.Thread.run
+Caused by: java.net.SocketException: Connection reset
+                   SocketInputStream.java:185 java.net.SocketInputStream.read
+                 BufferedInputStream.java:235 java.io.BufferedInputStream.fill
+                 BufferedInputStream.java:275 java.io.BufferedInputStream.read1
+                 BufferedInputStream.java:334 java.io.BufferedInputStream.read
+                                 Bits.java:46 org.bson.io.Bits.readFully
+                                 Bits.java:33 org.bson.io.Bits.readFully
+                                 Bits.java:28 org.bson.io.Bits.readFully
+                             Response.java:40 com.mongodb.Response.<init>
+                              DBPort.java:142 com.mongodb.DBPort.go
+                               DBPort.java:92 com.mongodb.DBPort.call
+                      DBTCPConnector.java:244 com.mongodb.DBTCPConnector.innerCall
+Mar 17, 2014 3:04:21 PM com.mongodb.DBPortPool gotError
+WARNING: emptying DBPortPool to troup.mongohq.com/50.17.141.157:10001 b/c of error
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:185)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:275)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+	at org.bson.io.Bits.readFully(Bits.java:46)
+	at org.bson.io.Bits.readFully(Bits.java:33)
+	at org.bson.io.Bits.readFully(Bits.java:28)
+	at com.mongodb.Response.<init>(Response.java:40)
+	at com.mongodb.DBPort.go(DBPort.java:142)
+	at com.mongodb.DBPort.call(DBPort.java:92)
+	at com.mongodb.DBTCPConnector.innerCall(DBTCPConnector.java:244)
+	at com.mongodb.DBTCPConnector.call(DBTCPConnector.java:216)
+	at com.mongodb.DBApiLayer$MyCollection.__find(DBApiLayer.java:288)
+	at com.mongodb.DB.command(DB.java:262)
+	at com.mongodb.DB.command(DB.java:244)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:985)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:956)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:931)
+	at com.mongodb.DBCollection.count(DBCollection.java:878)
+	at monger.collection$count.invokePrim(collection.clj:323)
+	at clog.model.post$page_count.invoke(post.clj:76)
+	at clog.model.post$get_page_posts.doInvoke(post.clj:80)
+	at clojure.lang.RestFn.invoke(RestFn.java:410)
+	at clog.handler$page_handler.invoke(handler.clj:52)
+	at clog.handler$fn__9134.invoke(handler.clj:139)
+	at compojure.core$make_route$fn__1475.invoke(core.clj:94)
+	at compojure.core$if_route$fn__1459.invoke(core.clj:40)
+	at compojure.core$if_method$fn__1452.invoke(core.clj:25)
+	at compojure.core$routing$fn__1481.invoke(core.clj:107)
+	at clojure.core$some.invoke(core.clj:2443)
+	at compojure.core$routing.doInvoke(core.clj:107)
+	at clojure.lang.RestFn.applyTo(RestFn.java:139)
+	at clojure.core$apply.invoke(core.clj:619)
+	at compojure.core$routes$fn__1485.invoke(core.clj:112)
+	at ring.middleware.keyword_params$wrap_keyword_params$fn__5525.invoke(keyword_params.clj:32)
+	at ring.middleware.nested_params$wrap_nested_params$fn__5574.invoke(nested_params.clj:70)
+	at ring.middleware.params$wrap_params$fn__1747.invoke(params.clj:58)
+	at ring.middleware.multipart_params$wrap_multipart_params$fn__5618.invoke(multipart_params.clj:107)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clog.util.stateful_loader$wrap_username$fn__5746.invoke(stateful_loader.clj:8)
+	at clog.util.stateful_request$wrap_stateful_request$fn__5263.invoke(stateful_request.clj:9)
+	at sandbar.stateful_session$wrap_stateful_session_STAR_$fn__3243.invoke(stateful_session.clj:65)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at ring.middleware.reload$wrap_reload$fn__1142.invoke(reload.clj:18)
+	at ring.middleware.stacktrace$wrap_stacktrace_log$fn__895.invoke(stacktrace.clj:17)
+	at ring.middleware.stacktrace$wrap_stacktrace_web$fn__957.invoke(stacktrace.clj:80)
+	at ring.adapter.jetty$proxy_handler$fn__96.invoke(jetty.clj:18)
+	at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:363)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:483)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:920)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:982)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:635)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:701)
+com.mongodb.MongoException$Network: Read operation to server troup.mongohq.com/50.17.141.157:10001 failed on database Clog
+                      DBTCPConnector.java:253 com.mongodb.DBTCPConnector.innerCall
+                      DBTCPConnector.java:216 com.mongodb.DBTCPConnector.call
+                          DBApiLayer.java:288 com.mongodb.DBApiLayer$MyCollection.__find
+                                  DB.java:262 com.mongodb.DB.command
+                                  DB.java:244 com.mongodb.DB.command
+                        DBCollection.java:985 com.mongodb.DBCollection.getCount
+                        DBCollection.java:956 com.mongodb.DBCollection.getCount
+                        DBCollection.java:931 com.mongodb.DBCollection.getCount
+                        DBCollection.java:878 com.mongodb.DBCollection.count
+                           collection.clj:323 monger.collection/count
+                                  post.clj:76 clog.model.post/page-count
+                                  post.clj:80 clog.model.post/get-page-posts
+                              RestFn.java:410 clojure.lang.RestFn.invoke
+                               handler.clj:52 clog.handler/page-handler
+                              handler.clj:139 clog.handler/fn
+                                  core.clj:94 compojure.core/make-route[fn]
+                                  core.clj:40 compojure.core/if-route[fn]
+                                  core.clj:25 compojure.core/if-method[fn]
+                                 core.clj:107 compojure.core/routing[fn]
+                                core.clj:2443 clojure.core/some
+                                 core.clj:107 compojure.core/routing
+                              RestFn.java:139 clojure.lang.RestFn.applyTo
+                                 core.clj:619 clojure.core/apply
+                                 core.clj:112 compojure.core/routes[fn]
+                        keyword_params.clj:32 ring.middleware.keyword-params/wrap-keyword-params[fn]
+                         nested_params.clj:70 ring.middleware.nested-params/wrap-nested-params[fn]
+                                params.clj:58 ring.middleware.params/wrap-params[fn]
+                     multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                                 flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                               session.clj:85 ring.middleware.session/wrap-session[fn]
+                        stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                       stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                      stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                                 flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                               session.clj:85 ring.middleware.session/wrap-session[fn]
+                                 Var.java:415 clojure.lang.Var.invoke
+                                reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                            stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                            stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                                 jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                             (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                      HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                              Server.java:363 org.eclipse.jetty.server.Server.handle
+              AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+              AbstractHttpConnection.java:920 org.eclipse.jetty.server.AbstractHttpConnection.headerComplete
+              AbstractHttpConnection.java:982 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete
+                          HttpParser.java:635 org.eclipse.jetty.http.HttpParser.parseNext
+                          HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+                  AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+               SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+                SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                    QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                    QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                              Thread.java:701 java.lang.Thread.run
+Caused by: java.net.SocketException: Connection reset
+                   SocketInputStream.java:185 java.net.SocketInputStream.read
+                 BufferedInputStream.java:235 java.io.BufferedInputStream.fill
+                 BufferedInputStream.java:275 java.io.BufferedInputStream.read1
+                 BufferedInputStream.java:334 java.io.BufferedInputStream.read
+                                 Bits.java:46 org.bson.io.Bits.readFully
+                                 Bits.java:33 org.bson.io.Bits.readFully
+                                 Bits.java:28 org.bson.io.Bits.readFully
+                             Response.java:40 com.mongodb.Response.<init>
+                              DBPort.java:142 com.mongodb.DBPort.go
+                               DBPort.java:92 com.mongodb.DBPort.call
+                      DBTCPConnector.java:244 com.mongodb.DBTCPConnector.innerCall
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278341 , "$inc" : 1} , "connectionId" : 41565 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278342 , "$inc" : 1} , "connectionId" : 43205 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278343 , "$inc" : 1} , "connectionId" : 39367 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278353 , "$inc" : 1} , "connectionId" : 43208 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278364 , "$inc" : 1} , "connectionId" : 38784 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278570 , "$inc" : 1} , "connectionId" : 43208 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278576 , "$inc" : 1} , "connectionId" : 39367 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278614 , "$inc" : 1} , "connectionId" : 41565 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278661 , "$inc" : 1} , "connectionId" : 39367 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278704 , "$inc" : 1} , "connectionId" : 43208 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278744 , "$inc" : 1} , "connectionId" : 41565 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278733 , "$inc" : 1} , "connectionId" : 43205 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278836 , "$inc" : 1} , "connectionId" : 41565 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395278842 , "$inc" : 1} , "connectionId" : 41565 , "err" :  null  , "ok" : 1.0}>
+#<WriteResult { "serverUsed" : "troup.mongohq.com/50.17.141.157:10001" , "updatedExisting" : true , "n" : 1 , "lastOp" : { "$ts" : 1395292527 , "$inc" : 1} , "connectionId" : 43205 , "err" :  null  , "ok" : 1.0}>
+Mar 22, 2014 9:34:42 AM com.mongodb.DBPortPool gotError
+WARNING: emptying DBPortPool to troup.mongohq.com/50.17.141.157:10001 b/c of error
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:185)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:275)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+	at org.bson.io.Bits.readFully(Bits.java:46)
+	at org.bson.io.Bits.readFully(Bits.java:33)
+	at org.bson.io.Bits.readFully(Bits.java:28)
+	at com.mongodb.Response.<init>(Response.java:40)
+	at com.mongodb.DBPort.go(DBPort.java:142)
+	at com.mongodb.DBPort.call(DBPort.java:92)
+	at com.mongodb.DBTCPConnector.innerCall(DBTCPConnector.java:244)
+	at com.mongodb.DBTCPConnector.call(DBTCPConnector.java:216)
+	at com.mongodb.DBApiLayer$MyCollection.__find(DBApiLayer.java:288)
+	at com.mongodb.DB.command(DB.java:262)
+	at com.mongodb.DB.command(DB.java:244)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:985)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:956)
+	at com.mongodb.DBCollection.getCount(DBCollection.java:931)
+	at com.mongodb.DBCollection.count(DBCollection.java:878)
+	at monger.collection$count.invokePrim(collection.clj:323)
+	at clog.model.post$page_count.invoke(post.clj:76)
+	at clog.model.post$get_page_posts.doInvoke(post.clj:80)
+	at clojure.lang.RestFn.invoke(RestFn.java:410)
+	at clog.handler$page_handler.invoke(handler.clj:52)
+	at clog.handler$fn__9134.invoke(handler.clj:139)
+	at compojure.core$make_route$fn__1475.invoke(core.clj:94)
+	at compojure.core$if_route$fn__1459.invoke(core.clj:40)
+	at compojure.core$if_method$fn__1452.invoke(core.clj:25)
+	at compojure.core$routing$fn__1481.invoke(core.clj:107)
+	at clojure.core$some.invoke(core.clj:2443)
+	at compojure.core$routing.doInvoke(core.clj:107)
+	at clojure.lang.RestFn.applyTo(RestFn.java:139)
+	at clojure.core$apply.invoke(core.clj:619)
+	at compojure.core$routes$fn__1485.invoke(core.clj:112)
+	at ring.middleware.keyword_params$wrap_keyword_params$fn__5525.invoke(keyword_params.clj:32)
+	at ring.middleware.nested_params$wrap_nested_params$fn__5574.invoke(nested_params.clj:70)
+	at ring.middleware.params$wrap_params$fn__1747.invoke(params.clj:58)
+	at ring.middleware.multipart_params$wrap_multipart_params$fn__5618.invoke(multipart_params.clj:107)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clog.util.stateful_loader$wrap_username$fn__5746.invoke(stateful_loader.clj:8)
+	at clog.util.stateful_request$wrap_stateful_request$fn__5263.invoke(stateful_request.clj:9)
+	at sandbar.stateful_session$wrap_stateful_session_STAR_$fn__3243.invoke(stateful_session.clj:65)
+	at ring.middleware.flash$wrap_flash$fn__3108.invoke(flash.clj:31)
+	at ring.middleware.session$wrap_session$fn__3234.invoke(session.clj:85)
+	at clojure.lang.Var.invoke(Var.java:415)
+	at ring.middleware.reload$wrap_reload$fn__1142.invoke(reload.clj:18)
+	at ring.middleware.stacktrace$wrap_stacktrace_log$fn__895.invoke(stacktrace.clj:17)
+	at ring.middleware.stacktrace$wrap_stacktrace_web$fn__957.invoke(stacktrace.clj:80)
+	at ring.adapter.jetty$proxy_handler$fn__96.invoke(jetty.clj:18)
+	at ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle(Unknown Source)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:363)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:483)
+	at org.eclipse.jetty.server.AbstractHttpConnection.headerComplete(AbstractHttpConnection.java:920)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete(AbstractHttpConnection.java:982)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:635)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:235)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Thread.java:701)
+com.mongodb.MongoException$Network: Read operation to server troup.mongohq.com/50.17.141.157:10001 failed on database Clog
+                      DBTCPConnector.java:253 com.mongodb.DBTCPConnector.innerCall
+                      DBTCPConnector.java:216 com.mongodb.DBTCPConnector.call
+                          DBApiLayer.java:288 com.mongodb.DBApiLayer$MyCollection.__find
+                                  DB.java:262 com.mongodb.DB.command
+                                  DB.java:244 com.mongodb.DB.command
+                        DBCollection.java:985 com.mongodb.DBCollection.getCount
+                        DBCollection.java:956 com.mongodb.DBCollection.getCount
+                        DBCollection.java:931 com.mongodb.DBCollection.getCount
+                        DBCollection.java:878 com.mongodb.DBCollection.count
+                           collection.clj:323 monger.collection/count
+                                  post.clj:76 clog.model.post/page-count
+                                  post.clj:80 clog.model.post/get-page-posts
+                              RestFn.java:410 clojure.lang.RestFn.invoke
+                               handler.clj:52 clog.handler/page-handler
+                              handler.clj:139 clog.handler/fn
+                                  core.clj:94 compojure.core/make-route[fn]
+                                  core.clj:40 compojure.core/if-route[fn]
+                                  core.clj:25 compojure.core/if-method[fn]
+                                 core.clj:107 compojure.core/routing[fn]
+                                core.clj:2443 clojure.core/some
+                                 core.clj:107 compojure.core/routing
+                              RestFn.java:139 clojure.lang.RestFn.applyTo
+                                 core.clj:619 clojure.core/apply
+                                 core.clj:112 compojure.core/routes[fn]
+                        keyword_params.clj:32 ring.middleware.keyword-params/wrap-keyword-params[fn]
+                         nested_params.clj:70 ring.middleware.nested-params/wrap-nested-params[fn]
+                                params.clj:58 ring.middleware.params/wrap-params[fn]
+                     multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                                 flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                               session.clj:85 ring.middleware.session/wrap-session[fn]
+                        stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                       stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                      stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                                 flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                               session.clj:85 ring.middleware.session/wrap-session[fn]
+                                 Var.java:415 clojure.lang.Var.invoke
+                                reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                            stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                            stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                                 jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                             (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                      HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                              Server.java:363 org.eclipse.jetty.server.Server.handle
+              AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+              AbstractHttpConnection.java:920 org.eclipse.jetty.server.AbstractHttpConnection.headerComplete
+              AbstractHttpConnection.java:982 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.headerComplete
+                          HttpParser.java:635 org.eclipse.jetty.http.HttpParser.parseNext
+                          HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+                  AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+               SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+                SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                    QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                    QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                              Thread.java:701 java.lang.Thread.run
+Caused by: java.net.SocketException: Connection reset
+                   SocketInputStream.java:185 java.net.SocketInputStream.read
+                 BufferedInputStream.java:235 java.io.BufferedInputStream.fill
+                 BufferedInputStream.java:275 java.io.BufferedInputStream.read1
+                 BufferedInputStream.java:334 java.io.BufferedInputStream.read
+                                 Bits.java:46 org.bson.io.Bits.readFully
+                                 Bits.java:33 org.bson.io.Bits.readFully
+                                 Bits.java:28 org.bson.io.Bits.readFully
+                             Response.java:40 com.mongodb.Response.<init>
+                              DBPort.java:142 com.mongodb.DBPort.go
+                               DBPort.java:92 com.mongodb.DBPort.call
+                      DBTCPConnector.java:244 com.mongodb.DBTCPConnector.innerCall
+org.apache.commons.fileupload.InvalidFileNameException: Invalid file name: Bmn0z9jT.asp\0txt
+                         Streams.java:201 org.apache.commons.fileupload.util.Streams.checkFileName
+                  FileUploadBase.java:829 org.apache.commons.fileupload.FileUploadBase$FileItemIteratorImpl$FileItemStreamImpl.getName
+                  multipart_params.clj:48 ring.middleware.multipart-params/parse-file-item
+                  multipart_params.clj:57 ring.middleware.multipart-params/parse-multipart-params[fn]
+                            core.clj:2487 clojure.core/map[fn]
+                          LazySeq.java:42 clojure.lang.LazySeq.sval
+                          LazySeq.java:60 clojure.lang.LazySeq.seq
+                              RT.java:484 clojure.lang.RT.seq
+                             core.clj:133 clojure.core/seq
+                         protocols.clj:30 clojure.core.protocols/seq-reduce
+                         protocols.clj:54 clojure.core.protocols/fn
+                         protocols.clj:13 clojure.core.protocols/fn[fn]
+                            core.clj:6177 clojure.core/reduce
+                  multipart_params.clj:55 ring.middleware.multipart-params/parse-multipart-params
+                  multipart_params.clj:81 ring.middleware.multipart-params/multipart-params-request
+                          RestFn.java:423 clojure.lang.RestFn.invoke
+                 multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                             flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                           session.clj:85 ring.middleware.session/wrap-session[fn]
+                    stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                   stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                  stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                             flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                           session.clj:85 ring.middleware.session/wrap-session[fn]
+                             Var.java:415 clojure.lang.Var.invoke
+                            reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                        stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                        stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                             jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                         (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                  HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                          Server.java:363 org.eclipse.jetty.server.Server.handle
+          AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+          AbstractHttpConnection.java:931 org.eclipse.jetty.server.AbstractHttpConnection.content
+          AbstractHttpConnection.java:992 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content
+                      HttpParser.java:856 org.eclipse.jetty.http.HttpParser.parseNext
+                      HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+              AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+           SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+            SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                          Thread.java:701 java.lang.Thread.run
+org.apache.commons.fileupload.InvalidFileNameException: Invalid file name: "/../../../__test__.war\0.txt"Content-Type: application/octet-stream
+                         Streams.java:201 org.apache.commons.fileupload.util.Streams.checkFileName
+                  FileUploadBase.java:829 org.apache.commons.fileupload.FileUploadBase$FileItemIteratorImpl$FileItemStreamImpl.getName
+                  multipart_params.clj:48 ring.middleware.multipart-params/parse-file-item
+                  multipart_params.clj:57 ring.middleware.multipart-params/parse-multipart-params[fn]
+                            core.clj:2487 clojure.core/map[fn]
+                          LazySeq.java:42 clojure.lang.LazySeq.sval
+                          LazySeq.java:60 clojure.lang.LazySeq.seq
+                             Cons.java:39 clojure.lang.Cons.next
+                              RT.java:598 clojure.lang.RT.next
+                              core.clj:64 clojure.core/next
+                        protocols.clj:146 clojure.core.protocols/fn
+                         protocols.clj:19 clojure.core.protocols/fn[fn]
+                         protocols.clj:31 clojure.core.protocols/seq-reduce
+                         protocols.clj:54 clojure.core.protocols/fn
+                         protocols.clj:13 clojure.core.protocols/fn[fn]
+                            core.clj:6177 clojure.core/reduce
+                  multipart_params.clj:55 ring.middleware.multipart-params/parse-multipart-params
+                  multipart_params.clj:81 ring.middleware.multipart-params/multipart-params-request
+                          RestFn.java:423 clojure.lang.RestFn.invoke
+                 multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                             flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                           session.clj:85 ring.middleware.session/wrap-session[fn]
+                    stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                   stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                  stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                             flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                           session.clj:85 ring.middleware.session/wrap-session[fn]
+                             Var.java:415 clojure.lang.Var.invoke
+                            reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                        stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                        stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                             jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                         (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                  HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                          Server.java:363 org.eclipse.jetty.server.Server.handle
+          AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+          AbstractHttpConnection.java:931 org.eclipse.jetty.server.AbstractHttpConnection.content
+          AbstractHttpConnection.java:992 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content
+                      HttpParser.java:856 org.eclipse.jetty.http.HttpParser.parseNext
+                      HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+              AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+           SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+            SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                          Thread.java:701 java.lang.Thread.run
+org.apache.commons.fileupload.InvalidFileNameException: Invalid file name: ..\../../wwwroot/hpmpa/userfiles/images/printers/nsfocusb76137.asp\0.tmp
+                         Streams.java:201 org.apache.commons.fileupload.util.Streams.checkFileName
+                  FileUploadBase.java:829 org.apache.commons.fileupload.FileUploadBase$FileItemIteratorImpl$FileItemStreamImpl.getName
+                  multipart_params.clj:48 ring.middleware.multipart-params/parse-file-item
+                  multipart_params.clj:57 ring.middleware.multipart-params/parse-multipart-params[fn]
+                            core.clj:2487 clojure.core/map[fn]
+                          LazySeq.java:42 clojure.lang.LazySeq.sval
+                          LazySeq.java:60 clojure.lang.LazySeq.seq
+                             Cons.java:39 clojure.lang.Cons.next
+                              RT.java:598 clojure.lang.RT.next
+                              core.clj:64 clojure.core/next
+                        protocols.clj:146 clojure.core.protocols/fn
+                         protocols.clj:19 clojure.core.protocols/fn[fn]
+                         protocols.clj:31 clojure.core.protocols/seq-reduce
+                         protocols.clj:54 clojure.core.protocols/fn
+                         protocols.clj:13 clojure.core.protocols/fn[fn]
+                            core.clj:6177 clojure.core/reduce
+                  multipart_params.clj:55 ring.middleware.multipart-params/parse-multipart-params
+                  multipart_params.clj:81 ring.middleware.multipart-params/multipart-params-request
+                          RestFn.java:423 clojure.lang.RestFn.invoke
+                 multipart_params.clj:107 ring.middleware.multipart-params/wrap-multipart-params[fn]
+                             flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                           session.clj:85 ring.middleware.session/wrap-session[fn]
+                    stateful_loader.clj:8 clog.util.stateful-loader/wrap-username[fn]
+                   stateful_request.clj:9 clog.util.stateful-request/wrap-stateful-request[fn]
+                  stateful_session.clj:65 sandbar.stateful-session/wrap-stateful-session*[fn]
+                             flash.clj:31 ring.middleware.flash/wrap-flash[fn]
+                           session.clj:85 ring.middleware.session/wrap-session[fn]
+                             Var.java:415 clojure.lang.Var.invoke
+                            reload.clj:18 ring.middleware.reload/wrap-reload[fn]
+                        stacktrace.clj:17 ring.middleware.stacktrace/wrap-stacktrace-log[fn]
+                        stacktrace.clj:80 ring.middleware.stacktrace/wrap-stacktrace-web[fn]
+                             jetty.clj:18 ring.adapter.jetty/proxy-handler[fn]
+                         (Unknown Source) ring.adapter.jetty.proxy$org.eclipse.jetty.server.handler.AbstractHandler$0.handle
+                  HandlerWrapper.java:116 org.eclipse.jetty.server.handler.HandlerWrapper.handle
+                          Server.java:363 org.eclipse.jetty.server.Server.handle
+          AbstractHttpConnection.java:483 org.eclipse.jetty.server.AbstractHttpConnection.handleRequest
+          AbstractHttpConnection.java:931 org.eclipse.jetty.server.AbstractHttpConnection.content
+          AbstractHttpConnection.java:992 org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content
+                      HttpParser.java:856 org.eclipse.jetty.http.HttpParser.parseNext
+                      HttpParser.java:235 org.eclipse.jetty.http.HttpParser.parseAvailable
+              AsyncHttpConnection.java:82 org.eclipse.jetty.server.AsyncHttpConnection.handle
+           SelectChannelEndPoint.java:628 org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle
+            SelectChannelEndPoint.java:52 org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run
+                QueuedThreadPool.java:608 org.eclipse.jetty.util.thread.QueuedThreadPool.runJob
+                QueuedThreadPool.java:543 org.eclipse.jetty.util.thread.QueuedThreadPool$3.run
+                          Thread.java:701 java.lang.Thread.run
+2014-03-22 09:35:38.809:WARN:oejs.AbstractHttpConnection:Failed UTF-8 decode for request path, trying ISO-8859-1
+2014-03-22 09:35:38.856:WARN:oejs.AbstractHttpConnection:Failed UTF-8 decode for request path, trying ISO-8859-1

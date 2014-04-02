@@ -20,6 +20,7 @@
     (page/html5
    [:meta {:charset "utf-8"}]
    [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
+   [:meta {:name "viewport" :content "width=device-width,initial-scale=1, maximum-scale=2"}] 
    [:head
     [:title "Clog: A simple blog"]
     (build-widget :js-loader
