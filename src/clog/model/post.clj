@@ -46,7 +46,7 @@
 
 (meta (exec-with-meta
  (build-query
-  (prn)
+  (tap)
   (find {:status {:draft false}})
   (append-meta {:a :b})
   (page 1))))
@@ -160,10 +160,6 @@
 ;; (add-user "arthur" (digest/sha-256 "saber") )
 
 ;; (update-post {:id 108 :title "post 99" :content "post 99 is here aaa"})
-
-(defn tap [x]
-  (prn x)
-  x)
 
 (with-collection "posts"
   (find {})

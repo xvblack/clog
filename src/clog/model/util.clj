@@ -40,3 +40,6 @@
                                             new-attr-map v))
                                      (assoc new-attr-map k v))) {} attr-map))
 
+(defn tap [x]
+  (prn x)
+  x)
