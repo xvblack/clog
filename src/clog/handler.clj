@@ -44,6 +44,8 @@
   (wrap-view mainpage
              :sidebars
              [(build-widget :sidewidget/user)
+              (build-widget :sidewidget/tags-cloud (post/post-tags))
+              (build-widget :sidewidget/rec-posts (post/get-random-posts))
               #_(build-widget :sidewidget-about-site)]))
 
 (defn page-handler [id]
@@ -115,6 +117,10 @@
     (wrap-view "register key is not valid"))
   )
 
+(defn tag-handler [tname]
+  (let [pp (post/get-post-with-tag tname)]
+    (wrap-view-with-widgets (build-widget :page-v2 pp))))
+
 (defn post-drafts-handler []
   (if-not (nil? (session-get :username))
     (wrap-view-with-widgets (build-widget :page-v2 (post/get-drafts)))
@@ -159,6 +165,8 @@
        (post-handler id))
   (GET "/posts/:id/edit" [id]
        (post-edit-handler id))
+  (GET "/tags/:tname" [tname]
+       (tag-handler tname))
 
   (POST "/posts/:id" [id title content tags as publish]
         (post-update-handler id title content tags as publish))

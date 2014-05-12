@@ -1,6 +1,5 @@
 (ns clog.widgets.basic
-  (:require [clojure.data.json :as json]
-            [clog.database])
+  (:require [clojure.data.json :as json])
   (:use clog.util.widget
         clog.util.stateful-request))
 

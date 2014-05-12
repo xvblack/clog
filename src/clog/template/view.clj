@@ -1,7 +1,6 @@
 (ns clog.template.view
   (:require [hiccup.page :as page]
-            [clojure.data.json :as json]
-            [clog.database :as db])
+            [clojure.data.json :as json])
   (:use markdown.core
         clog.config
         clog.util

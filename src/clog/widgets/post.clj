@@ -2,12 +2,19 @@
   (:use clog.util.widget
         clog.util.stateful-request
         clog.util)
-  (:require [clog.database :as db]
-            [clojure.data.json :as json]))
+  (:require [clojure.data.json :as json]))
+
+(def-widget :post-link [post]
+  :body
+  [:a {:href (str "/posts/" (:id post))} (:title post)])
 
 (def-widget :post-edit-link [post]
   :body
   [:a {:href (str "/posts/" (:id post) "/edit")} "Edit"])
+
+(def-widget :tag-link [tag]
+  :body
+  [:a {:href (str "/tags/" tag)} tag])
 
 (def-widget :post [post]
   :body
@@ -103,3 +110,15 @@
        (if (:next page) [:a {:href (str "/page/" (+ id 1))} "Next"])))]
    ]
   )
+
+(def-widget :sidewidget/tags-cloud [tags]
+  :body
+  [:div {:class "tags-cloud"}
+   [:h3 "Tags"]
+   [:ul (map (fn [tag] [:li {:class "tag"} (build-widget :tag-link tag)]) tags)]])
+
+(def-widget :sidewidget/rec-posts [posts]
+  :body
+  [:div {:class "rec-posts"}
+   [:h3 "Recommended posts"
+    [:ul (map (fn [post] [:li {:class "rec-post-li"} (build-widget :post-link post)]) posts)]]])

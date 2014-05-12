@@ -3,7 +3,7 @@
   (:require [monger.core :as mg]
             [monger.collection :as coll]
             [clog.config :as config])
-  (:use monger.query
+  (:use [monger.query :exclude [find]]
         monger.operators
         clog.util
         clog.model.util)
@@ -19,14 +19,17 @@
   (coll/distinct "posts" :tags))
 
 (defmacro defscope [name parameter & body]
-  `(defn ~name [query# ~@parameter] (merge query# (-> {} ~@body))))
+  `(defn ~name [query# ~@parameter] (-> query# ~@body)))
 
 (defmacro build-query [& body]
   `(-> (empty-query (.getCollection mg/*mongodb-database* "posts")) ~@body))
 
+(defn find [query param]
+  (update-in query [:query] deep-merge param))
+
 (defn append-meta [q m]
   (let [old-meta (meta q)
-        new-meta (merge old-meta {:data m})]
+        new-meta (deep-merge old-meta {:data m})]
     (with-meta q new-meta)))
 
 (defn- exec-with-meta [q]
@@ -42,22 +45,14 @@
   #_(save-count)
   (paginate :page id :per_page 10))
 
-
-
-(meta (exec-with-meta
- (build-query
-  (tap)
-  (find {:status {:draft false}})
-  (append-meta {:a :b})
-  (page 1))))
+(defscope tags [tag]
+  (find {:tags tag}))
 
 (def t (build-query
  (find {:status {:draft false}})
+ (tags :a)
  (append-meta {:a :b})
  ))
-
-(page t 1)
-
 
 (defscope published []
   (find {:status {:draft false}}))
@@ -83,6 +78,24 @@
 
 (defn- get-posts [param]
   (coll/find-maps "posts" param))
+
+(defn get-random-posts [ &[n]]
+  (let [pp (get-posts {:status {:draft false}})
+        n (if (not (nil? n)) n 3)]
+    (prn pp)
+    (loop [nums #{}]
+      (if (< (count nums) n)
+        (recur (conj nums (rand-int (count pp))))
+        (map #(nth pp %) nums)))))
+
+(defn get-post-with-tag [tname]
+  (let [pp (with-collection "posts"
+             (published)
+             (tags tname))]
+    {:id nil
+     :prev false
+     :next false
+     :posts pp}))
 
 (defn- update [coll fp up]
   (let [to-$set (fn to-$set [attr-map]
@@ -160,9 +173,3 @@
 ;; (add-user "arthur" (digest/sha-256 "saber") )
 
 ;; (update-post {:id 108 :title "post 99" :content "post 99 is here aaa"})
-
-(with-collection "posts"
-  (find {})
-  (sort {:time -1} )
-  (paginate :page 1 :per_page 10)
-  (tap))

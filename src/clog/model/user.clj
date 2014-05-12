@@ -19,6 +19,13 @@
       (coll/insert "users" {:_id (ObjectId.) :username username :password_hashed password_hashed :salt salt})
       false)))
 
+(defn reset-user [username password]
+  (let [salt (BCrypt/gensalt)
+        password_hashed (BCrypt/hashpw password salt)]
+    (if (check-username-exist? username)
+      (coll/update "users" {:username username} {:username username :password_hashed password_hashed :salt salt})
+      false)))
+
 (defn auth-user [username password]
   (let [user (coll/find-one-as-map "users" {:username username})
         salt (:salt user)]

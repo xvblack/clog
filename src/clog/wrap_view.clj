@@ -1,7 +1,6 @@
 (ns clog.wrap-view
   (:require [hiccup.page :as page]
-            [clojure.data.json :as json]
-            [clog.database :as db])
+            [clojure.data.json :as json])
   (:use clog.config
         clog.util
         clog.util.stateful-request
@@ -19,7 +18,7 @@
     (page/html5
    [:meta {:charset "utf-8"}]
    [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]
-   [:meta {:name "viewport" :content "width=device-width,initial-scale=1, maximum-scale=2"}] 
+   [:meta {:name "viewport" :content "width=device-width,initial-scale=1, maximum-scale=2"}]
    [:head
     [:title "Clog: A simple blog"]
     (build-widget :js-loader
