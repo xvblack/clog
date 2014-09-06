@@ -15,6 +15,7 @@
 
 (defn wrap-view [content & {:keys [sidebars]}]
   (let [sidebars (if-not (vector? (first sidebars)) [sidebars] sidebars)]
+    (println "Wrapping")
     (page/html5
    [:meta {:charset "utf-8"}]
    [:meta {:http-equiv "X-UA-Compatible" :content "IE=edge,chrome=1"}]

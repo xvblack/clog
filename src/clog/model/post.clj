@@ -16,7 +16,7 @@
   (coll/count "posts"))
 
 (defn post-tags []
-  (coll/distinct "posts" :tags))
+  (coll/distinct "posts" :tags {:status {:draft false}}))
 
 (defmacro defscope [name parameter & body]
   `(defn ~name [query# ~@parameter] (-> query# ~@body)))
@@ -84,7 +84,7 @@
         n (if (not (nil? n)) n 3)]
     (prn pp)
     (loop [nums #{}]
-      (if (< (count nums) n)
+      (if (< (count nums) (min n (count pp)))
         (recur (conj nums (rand-int (count pp))))
         (map #(nth pp %) nums)))))
 

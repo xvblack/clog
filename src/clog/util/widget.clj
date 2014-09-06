@@ -36,7 +36,11 @@
                          (inc (wn @a))
                          0)})
     (binding [widget-path (conj widget-path [wn (wn @a)])]
-      (apply (wn @widgets) params))))
+      (println "Building" wn)
+      (let [result (apply (wn @widgets) params)]
+        (println "Built" wn)
+        result)
+      )))
 
 (defn react-widget [component-name & [props]]
   [:div

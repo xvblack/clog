@@ -39,7 +39,9 @@
   (apply deep-merge-with (fn [_ x] x) maps))
 
 (defn format-time [time-long]
-  (let [time-format (timef/formatter "MMM dd,yyyy hh:mm")]
+  (let [time-format (timef/formatter "MMM dd,yyyy hh:mm")
+        time-long (clojure.core/long time-long)]
+    (println time-long)
     (timef/unparse time-format (timec/from-long time-long))))
 
 (defn wrap-ul [& items]

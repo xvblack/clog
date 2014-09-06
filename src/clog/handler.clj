@@ -41,18 +41,24 @@
     (response/redirect default)))
 
 (defn wrap-view-with-widgets [mainpage]
-  (wrap-view mainpage
-             :sidebars
-             [(build-widget :sidewidget/user)
-              (build-widget :sidewidget/tags-cloud (post/post-tags))
-              (build-widget :sidewidget/rec-posts (post/get-random-posts))
-              #_(build-widget :sidewidget-about-site)]))
+  (let [result (wrap-view mainpage
+                          :sidebars
+                          [(build-widget :sidewidget/user)
+                           (build-widget :sidewidget/tags-cloud (post/post-tags))
+                           (build-widget :sidewidget/rec-posts (post/get-random-posts))
+                           #_(build-widget :sidewidget-about-site)])]
+    (println "Wrapped")
+    result))
 
 (defn page-handler [id]
   (let [id (-> id parse-id)]
     (if-let [page (post/get-page-posts id)]
-      (wrap-view-with-widgets
-       (build-widget :page-v2 page))
+      (do
+        (println "Fetched")
+        (wrap-view-with-widgets
+         (build-widget :page-v2 page))
+        )
+
       (not-found "akarin akarin"))
     ))
 
